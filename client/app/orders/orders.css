@@ -1,0 +1,67 @@
+h5 {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.order-list {
+	margin: 0;
+}
+.form-flex .secondary.orders {
+  min-width: 112px;
+}
+.form-flex .secondary.invoices {
+  min-width: 73px;
+}
+.form-flex .secondary.items {
+  min-width: 65px;
+}
+.order-list li {
+	border: none;
+	border-top: 1px solid #eee;
+	margin-bottom: 0;
+	padding: 12px 0 0 0;
+}
+.order-list li li {
+	padding: 0;
+	padding-top: 12px;
+	border: 0;
+}
+.form-group input.handicapped {
+	background-color: transparent;
+	cursor:	default;
+}
+.invoice-list, .item-list {
+	margin-bottom: 12px;
+}
+.invoice-list li, .item-list li {
+	padding: 12px 0 0 0;
+	border: 0;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+.inline-cal {
+	text-align: center;
+	margin-bottom: 7px;
+
+}
+.well-sm {
+	margin-bottom: 0px;
+	padding: 0px;
+}
+.input-group {
+	margin-bottom: 0;
+}
+.panel-title {
+	font-size: 14px;
+	font-weight: normal;
+	cursor: default;
+}
+.panel-heading {
+	padding: 6px 12px;
+	background-color: #eee;
+}
+.panel-body {
+	padding: 12px 12px 0px 12px;
+}
+.panel-group {
+	margin-bottom: 12px;
+}

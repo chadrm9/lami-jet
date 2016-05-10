@@ -1,0 +1,38 @@
+<form class="form" id="editNote" name="editNote" ng-submit="vm.saveNote(editNote)" novalidate>
+
+  <div class="form-flex form-group" ng-class="{ 'has-error': editNote.title.$invalid && vm.submitted }">
+
+    <div class="secondary notes">
+      <label for="title"><span class="text-muted">Title</span></label>
+    </div><div class="primary">
+      <input type="text" name="title" id="title" class="form-control" ng-model="vm.note.title" 
+        placeholder="Title" required>
+    </div>
+  </div>
+  <div class="form-flex form-group error" ng-class="{ 'has-error': editNote.title.$invalid 
+                                                                    && vm.submitted }">
+    <div class="secondary notes"></div>
+    <div class="primary">
+      <p class="help-block" ng-show="editNote.title.$error.required && vm.submitted" 
+        ng-bind="'Enter a title'"></p>
+    </div>
+  </div>
+  
+
+  <div class="form-flex form-group" ng-class="{ 'has-error': editNote.message.$invalid && vm.submitted }">
+    <div class="secondary notes">
+      <label for="message"><span class="text-muted">Message</span></label>
+    </div><div class="primary">
+      <textarea id="message" name="message" class="form-control" ng-model="vm.note.message" 
+        placeholder="Message" rows="1" msd-elastic required></textarea>
+    </div>
+  </div>
+  <div class="form-flex form-group error" ng-class="{ 'has-error': editNote.message.$invalid 
+                                                                    && vm.submitted }">
+    <div class="secondary notes"></div>
+    <div class="primary">
+      <p class="help-block" ng-show="editNote.message.$error.required && vm.submitted" 
+        ng-bind="'Enter a message'"></p>
+    </div>
+  </div>
+</form>

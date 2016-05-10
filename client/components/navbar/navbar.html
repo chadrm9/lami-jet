@@ -1,0 +1,46 @@
+<div class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" ng-click="nav.isCollapsed = !nav.isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">LaMi<i class="glyphicon glyphicon-plane"></i>Jet</a>
+    </div>
+    <div uib-collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li ng-repeat="item in nav.menu" ui-sref-active="active" ng-show="nav.isLoggedIn()" 
+            ng-click="nav.isCollapsed=true">
+          <a ui-sref="{{item.state}}">
+            <i class="glyphicon glyphicon-{{item.icon}}"></i><span ng-bind="' {{item.title}}'"></span></a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <li ng-show="nav.isAdmin()" ng-click="nav.isCollapsed=true" ui-sref-active="active">
+          <a ui-sref="admin"><i class="glyphicon glyphicon-user"></i>
+            <span ng-bind="' ' + nav.getCurrentUser().name"></span></a></li>
+
+        <li ng-hide="nav.isLoggedIn()" ng-click="nav.isCollapsed=true" ui-sref-active="active">
+          <a ui-sref="login"><i class="glyphicon glyphicon-log-in"></i> Login</a></li>
+
+        <li ng-show="nav.isLoggedIn() && !nav.isAdmin()"><p class="navbar-text">
+          <i class="glyphicon glyphicon-user"></i><span ng-bind="' ' + nav.getCurrentUser().name"></span>
+          </p></li>
+
+        <li ng-show="nav.isLoggedIn()" ng-click="nav.isCollapsed=true" ui-sref-active="active">
+          <a ui-sref="settings"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+
+        <li ng-show="nav.isLoggedIn()" ng-click="nav.isCollapsed=true"><a ui-sref="logout">
+          <i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- fixed-top alert display -->
+  <div class="alert-display">
+    <alert-display></alert-display>
+  </div>
+</div>

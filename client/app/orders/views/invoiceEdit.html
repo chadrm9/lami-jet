@@ -1,0 +1,82 @@
+<form class="form" id="editInvoice" name="editInvoice" ng-submit="vm.saveInvoice(editInvoice)" novalidate>
+
+  <!-- Invoice # -->
+  <div class="form-flex form-group" ng-class="{ 'has-error': editInvoice.invoiceNo.$invalid 
+                                                              && vm.submitted }">
+    <div class="secondary invoices">
+      <label for="invoiceNo"><span class="text-muted">Invoice #</span></label>
+    </div>
+    <div class="primary">
+      <input type="text" id="invoiceNo" name="invoiceNo" class="form-control" 
+              ng-model="vm.invoice.invoiceNo" placeholder="Invoice #" required>
+    </div>
+  </div>
+  <div class="form-flex form-group error" ng-class="{ 'has-error': editInvoice.invoiceNo.$invalid 
+                                                                    && vm.submitted }">
+    <div class="secondary invoices"></div>
+    <div class="primary">
+      <p class="help-block" ng-show="editInvoice.invoiceNo.$error.required && vm.submitted" 
+        ng-bind="'Enter invoice #'"></p>
+    </div>
+  </div>
+
+  <!-- Ticket # -->
+  <div class="form-flex form-group" ng-class="{ 'has-error': editInvoice.ticketNo.$invalid 
+                                                                    && vm.submitted }">
+    <div class="secondary invoices">
+      <label for="ticketNo"><span class="text-muted">Ticket #</span></label>
+    </div>
+    <div class="primary">
+      <input type="text" id="ticketNo" name="ticketNo" class="form-control" 
+              ng-model="vm.invoice.ticketNo" placeholder="Ticket #" required>
+    </div>
+  </div>
+  <div class="form-flex form-group error" ng-class="{ 'has-error': editInvoice.ticketNo.$invalid 
+                                                                    && vm.submitted }">
+    <div class="secondary invoices"></div>
+    <div class="primary">
+      <p class="help-block" ng-show="editInvoice.ticketNo.$error.required && vm.submitted" 
+        ng-bind="'Enter ticket #'"></p>
+    </div>
+  </div>
+
+  <!-- Amount -->
+  <div class="form-flex form-group" ng-class="{ 'has-error': editInvoice.amount.$invalid 
+                                                                    && vm.submitted }">
+    <div class="secondary invoices">
+      <label for="amount"><span class="text-muted">Amount $</span></label>
+    </div>
+    <div class="primary">
+      <input type="text" id="amount" name="amount" class="form-control" 
+              ng-model="vm.invoice.amount" placeholder="Amount" required>
+    </div>
+  </div>
+  <div class="form-flex form-group error" ng-class="{ 'has-error': editInvoice.amount.$invalid 
+                                                                    && vm.submitted }">
+    <div class="secondary invoices"></div>
+    <div class="primary">
+      <p class="help-block" ng-show="editInvoice.amount.$error.required && vm.submitted" 
+        ng-bind="'Enter amount'"></p>
+    </div>
+  </div>
+
+  <!-- Quantity -->
+  <div class="form-flex form-group" ng-class="{ 'has-error': editInvoice.invoiceQuantity.$invalid 
+                                                              && vm.submitted }">
+    <div class="secondary invoices">
+      <label for="invoiceQuantity"><span class="text-muted">Quantity</span></label>
+    </div>
+    <div class="primary">
+      <input type="text" id="invoiceQuantity" name="invoiceQuantity" class="form-control" 
+              ng-model="vm.invoice.quantity" placeholder="Quantity" required>
+    </div>
+  </div>
+  <div class="form-flex form-group error" ng-class="{ 'has-error': editInvoice.invoiceQuantity.$invalid 
+                                                                    && vm.submitted }">
+    <div class="secondary invoices"></div>
+    <div class="primary">
+      <p class="help-block" ng-show="editInvoice.invoiceQuantity.$error.required && vm.submitted" 
+        ng-bind="'Enter quantity'"></p>
+    </div>
+  </div>
+</form>

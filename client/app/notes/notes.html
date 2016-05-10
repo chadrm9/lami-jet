@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="page-header">Notes</h4>
+
+      <!-- Create, Sort, Clear buttons -->
+      <div class="form-group">
+      <a type="button" class="btn btn-primary" ui-sref="notesEdit">
+        <i class="glyphicon glyphicon-pencil"></i> Create</a>
+
+        <div class="pull-right">
+          <button type="button" class="btn btn-default" ng-click="vm.sortReverse()">
+            <i class="text-muted glyphicon glyphicon-sort"></i> Sort</button>
+
+          <button type="button" class="btn btn-default" ng-show="vm.filter" 
+            ng-click="vm.filter = ''">
+            <i class="text-muted glyphicon glyphicon-filter"></i> Clear</button>
+        </div>
+      </div>
+
+      <!-- List notes -->
+      <ul class="list-group note-list">
+        <li class="list-group-item" ng-repeat="note in vm.notes | orderBy:note.updatedAt : vm.sortDirection | filter: vm.filter">
+          <i class="text-muted glyphicon glyphicon-time"></i>
+          <span class="text-muted" ng-bind="note.updatedAt | date: 'EEE MMM dd h:mm a'"></span>
+
+          <div class="pull-right">
+            <i class="text-muted glyphicon glyphicon-user"></i>
+            <a href="#" ng-click="vm.filter.user.name ? vm.filter = '' : 
+              vm.filter.user.name = note.user.name"><span ng-bind="note.user.name"></span></a>
+          </div>
+
+          <div class="form-group">
+            <span><strong ng-bind="note.title"></strong></span><br>
+            <span ng-bind="note.message"></span>
+          </div>
+
+          <!-- Edit/Delete buttons -->
+          <div class="form-group">
+            <div ng-hide="note.delete">
+              <!-- <a type="button" class="btn btn-info" ui-sref="notesEdit({id:note._id})">
+                <span ng-bind="note.comments.length"></span> Comments</a> -->
+
+              <div ng-show="vm.userCanEdit(note.user.name)">
+                <a type="button" class="btn btn-warning" ui-sref="notesEdit({id:note._id})">
+                  <i class="glyphicon glyphicon-edit"></i> Edit</a>
+
+                <button class="pull-right btn btn-danger" ng-click="note.delete = !note.delete">
+                  <i class="glyphicon glyphicon-trash"></i> Delete</button>
+              </div>
+            </div>
+
+            <div ng-show="note.delete">
+              <button class="btn btn-success" ng-click="vm.deleteNote(note._id)">
+                <i class="glyphicon glyphicon-ok"></i> Confirm</button>
+
+              <button class="pull-right  btn btn-danger" ng-click="note.delete = !note.delete">
+                <i class="glyphicon glyphicon-remove"></i> Cancel</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,158 @@
+<form class="form" id="editOrder" name="editOrder" ng-submit="vm.saveOrder(editOrder)" novalidate>
+
+  <!-- First Name -->
+  <!-- <div class="form-flex form-group">
+    <div class="secondary orders">
+      <label for="firstName"><span class="text-muted">First Name</span></label>
+    </div>
+    <div class="primary">
+      <input type="text" id="firstName" name="firstName" class="form-control" 
+        ng-model="vm.order.user.firstName" placeholder="First Name" disabled required>
+    </div>
+  </div> -->
+
+  <!-- Last Name -->
+  <!-- <div class="form-flex form-group">
+    <div class="secondary orders">
+      <label for="lastName"><span class="text-muted">Last Name</span></label>
+    </div>
+    <div class="primary">
+      <input type="text" id="lastName" name="lastName" class="form-control" 
+        ng-model="vm.order.user.lastName" placeholder="Last Name" disabled required>
+    </div>
+  </div> -->
+
+  <!-- Full Name -->
+  <div class="form-flex form-group">
+    <div class="secondary orders">
+      <label for="fullName"><span class="text-muted">Full Name</span></label>
+    </div>
+    <div class="primary">
+      <input type="text" id="fullName" name="fullName" class="form-control" 
+        ng-model="vm.fullName" placeholder="Full Name" disabled required>
+    </div>
+  </div>
+
+  <!-- Salesman # -->
+  <div class="form-flex form-group">
+    <div class="secondary orders">
+      <label for="salesmanNo"><span class="text-muted">Salesman #</span></label>
+    </div>
+    <div class="primary">
+      <input type="text" id="salesmanNo" name="salesmanNo" class="form-control" 
+        ng-model="vm.order.user.salesmanNo" placeholder="Salesman #" disabled required>
+    </div>
+  </div>
+
+  <!-- Rep Phone # -->
+  <div class="form-flex form-group">
+    <div class="secondary orders">
+      <label for="repPhoneNo"><span class="text-muted">Rep Phone #</span></label>
+    </div>
+    <div class="primary">
+      <input type="text" id="repPhoneNo" name="repPhoneNo" class="form-control" 
+        ng-model="vm.order.user.repPhoneNo" placeholder="Rep Phone #" disabled required>
+    </div>
+  </div>
+
+  <!-- District Mgr -->
+  <div class="form-flex form-group">
+    <div class="secondary orders">
+      <label for="districtMgr"><span class="text-muted">District Mgr</span></label>
+    </div>
+    <div class="primary">
+      <input type="text" id="districtMgr" name="districtMgr" class="form-control" 
+        ng-model="vm.districtMgr" placeholder="District Mgr" disabled required>
+    </div>
+  </div>
+
+  <!-- Chain & Store # -->
+  <div class="form-flex form-group" ng-class="{ 'has-error': editOrder.chainStore.$invalid 
+                                                              && vm.submitted }">
+    <div class="secondary orders">
+      <label for="chainStore"><span class="text-muted">Chain & Store #</span></label>
+    </div>
+    <div class="primary">
+      <input type="text" id="chainStore" name="chainStore" class="form-control" 
+              ng-model="vm.order.chainStore" placeholder="(e.g. ZKRLO 123)" required>
+    </div>
+  </div>
+  <div class="form-flex form-group error" ng-class="{ 'has-error': editOrder.chainStore.$invalid 
+                                                                    && vm.submitted }">
+    <div class="secondary orders"></div>
+    <div class="primary">
+      <p class="help-block" ng-show="editOrder.chainStore.$error.required && vm.submitted" 
+        ng-bind="'Enter chain & store #'"></p>
+    </div>
+  </div>
+
+  <!-- Town -->
+  <div class="form-flex form-group" ng-class="{ 'has-error': editOrder.town.$invalid 
+                                                              && vm.submitted }">
+    <div class="secondary orders">
+      <label for="town"><span class="text-muted">Town</span></label>
+    </div>
+    <div class="primary">
+      <input type="text" id="town" name="town" class="form-control" ng-model="vm.order.town" 
+              placeholder="Town" required>
+    </div>
+  </div>
+  <div class="form-flex form-group error" ng-class="{ 'has-error': editOrder.town.$invalid 
+                                                                    && vm.submitted }">
+    <div class="secondary orders"></div>
+    <div class="primary">
+      <p class="help-block" ng-show="editOrder.town.$error.required && vm.submitted" 
+        ng-bind="'Enter town'"></p>
+    </div>
+  </div>
+
+  <!-- Date Serviced -->
+  <div class="form-flex form-group">
+    <div class="secondary orders">
+      <label for="dateServiced"><span class="text-muted">Serviced Date</span></label>
+    </div>
+    <div class="primary">
+      <p class="input-group" ng-click="vm.toggleDateServicedCal()">
+        <input type="text" uib-datepicker-popup="{{vm.dateFormat}}" id="dateServiced" 
+          name="dateServiced" class="handicapped form-control" ng-model="vm.order.dateServiced" 
+          placeholder="Serviced Date" readonly required>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default">
+            <i class="text-muted glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
+    </div>
+  </div>
+  <div class="inline-cal" ng-show="vm.dateServicedCal">
+    <div style="display:inline-block;">
+      <uib-datepicker ng-model="vm.order.dateServiced" class="well well-sm" 
+        datepicker-options="vm.inlineOptions" ng-change="vm.toggleDateServicedCal()">
+      </uib-datepicker>
+    </div>
+  </div>
+
+  <!-- Date In-Store -->
+  <div class="form-flex form-group">
+    <div class="secondary orders">
+      <label for="dateInStore"><span class="text-muted">In-Store Date</span></label>
+    </div>
+    <div class="primary">
+      <p class="input-group" ng-click="vm.toggleDateInStoreCal()">
+        <input type="text" uib-datepicker-popup="{{vm.dateFormat}}" id="dateInStore" 
+          name="dateInStore" class="handicapped form-control" ng-model="vm.order.dateInStore" 
+          placeholder="In-Store Date" readonly required>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default">
+            <i class="text-muted glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
+    </div>
+  </div>
+  <div class="inline-cal" ng-show="vm.dateInStoreCal">
+    <div style="display:inline-block;">
+      <uib-datepicker ng-model="vm.order.dateInStore" class="well well-sm" 
+        datepicker-options="vm.inlineOptions" ng-change="vm.toggleDateInStoreCal()">
+      </uib-datepicker>
+    </div>
+  </div>
+</form>

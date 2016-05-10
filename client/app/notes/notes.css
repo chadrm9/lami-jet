@@ -1,0 +1,18 @@
+.note-list {
+	margin: 0;
+}
+.form-flex .secondary.notes {
+  min-width: 70px;
+}
+.note-list li {
+	border: none;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 0px;
+	padding: 12px 0 0px 0;
+}
+.note-list li:first-child {
+	border-top: 1px solid #eee;
+}
+.note-list li:last-child {
+	border-bottom: none;
+}

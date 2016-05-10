@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="page-header">
+        <span class="text-muted" ng-bind="vm.getPageHeader()"></span>
+        <span ng-bind="vm.pageHeader[vm.pageHeader.length-1]"></span>
+      </h4>
+
+      <div ng-show="vm.edit === 'details'">
+      
+        <!-- orderDetails template -->
+        <div ui-view="orderDetails"></div>
+
+        <!-- Save/cancel order edit buttons -->
+        <form>
+          <div class="form-group">
+            <div ng-hide="vm.cancel">
+              <button type="submit" class="btn btn-success" form="editOrder" value="Submit">
+                <i class="glyphicon glyphicon-ok"></i> Save</button>
+                
+              <button type="button" class="pull-right btn btn-danger" ng-click="vm.cancel = !vm.cancel">
+                <i class="glyphicon glyphicon-remove"></i> Cancel</button>
+            </div>
+            <div ng-show="vm.cancel">
+              <a type="button" class="btn btn-success" ui-sref="orders">
+                  <i class="glyphicon glyphicon-ok"></i> Confirm</a>
+
+              <button type="button" class="pull-right btn btn-danger" ng-click="vm.cancel = !vm.cancel">
+                <i class="glyphicon glyphicon-remove"></i> Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div ng-show="vm.edit === 'invoice'">
+
+        <!-- invoiceEdit template -->
+        <div ui-view="invoiceEdit"></div>
+        <form>
+          <div class="form-group">
+            <div ng-hide="vm.cancel">
+              <button type="submit" class="btn btn-success" form="editInvoice" value="Submit">
+                <i class="glyphicon glyphicon-plus"></i> Save</button>
+                
+              <button type="button" class="pull-right btn btn-danger" 
+                ng-click="vm.resetInvoice()">
+                <i class="glyphicon glyphicon-new-window"></i> Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div ng-show="vm.edit === 'item'">
+
+        <!-- itemEdit template -->
+        <div ui-view="itemEdit"></div>
+        <form>
+          <div class="form-group">
+            <div ng-hide="vm.cancel">
+              <button type="submit" class="btn btn-success" form="editItem" value="Submit">
+                <i class="glyphicon glyphicon-plus"></i> Save</button>
+                
+              <button type="button" class="pull-right btn btn-danger" 
+                ng-click="vm.resetItem()">
+                <i class="glyphicon glyphicon-new-window"></i> Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <form ng-show="vm.edit === 'details'">
+
+        <!-- Add invoice button -->
+        <div class="form-flex form-group">
+          <div class="secondary orders">
+            <span class="text-muted">
+              <i class="glyphicon glyphicon-file"></i> 
+              Invoice<span ng-if="vm.order.invoices.length != 1">s </span>
+              (<span ng-bind="vm.order.invoices.length"></span>)
+            </span>
+          </div>
+          <div class="primary">
+            <button type="button" class="pull-right btn btn-info" ng-click="vm.edit = 'invoice'; 
+              vm.pageHeader.push('Add Invoice'); vm.submitted = false" 
+              event-focus="click" event-focus-id="invoiceNo">
+              <i class="glyphicon glyphicon-plus"></i> Add Invoice</button>
+          </div>
+        </div>
+
+        <!-- invoiceList template -->
+        <div ui-view="invoiceList"></div>
+
+        <!-- Add item button -->
+        <div class="form-flex form-group">
+          <div class="secondary orders">
+            <span class="text-muted">
+              <i class="glyphicon glyphicon-barcode"></i> 
+              Item<span ng-if="vm.order.items.length != 1">s </span>
+              (<span ng-bind="vm.order.items.length"></span>)
+            </span>
+          </div>
+          <div class="primary">
+            <button type="button" class="pull-right btn btn-info" 
+              ng-click="vm.edit = 'item'; vm.pageHeader.push('Add Item'); vm.submitted = false" 
+              event-focus="click" event-focus-id="aisle">
+              <i class="glyphicon glyphicon-plus"></i> Add Item</button>
+          </div>
+        </div>
+
+        <!-- itemList template -->
+        <div ui-view="itemList"></div>
+      </form>
+    </div>
+  </div>
+</div>

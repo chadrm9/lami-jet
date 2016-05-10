@@ -1,0 +1,128 @@
+
+/**
+ * Bootstrap Fonts
+ */
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot');
+  src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'),
+  url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+  url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+/**
+ *Font Awesome Fonts
+ */
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?v=4.1.0');
+  src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'),
+  url('../bower_components/font-awesome/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'),
+  url('../bower_components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'),
+  url('../bower_components/font-awesome/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/**
+ * App-wide Styles
+*/
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+/* fixed-top padding */
+body { 
+  padding-top: 60px; 
+}
+.navbar {
+  margin-bottom: 0px;
+}
+/* form-group */
+.form-group {
+  margin-bottom: 12px;
+  align-items: center;
+}
+.form-group label {
+  font-weight: normal;
+  margin: 0;
+  vertical-align: middle;
+}
+.form .form-group input {
+  margin: 0;
+}
+/* form-flex */
+.form-flex {
+  display: flex;
+}
+.form-flex .primary {
+  flex-grow: 1;
+  resize: none;
+}
+/* form-group error */
+.form-group.error {
+  margin: 0;
+}
+.form-group.error.form-flex .primary p {
+  margin: 0;
+  margin-bottom: 12px;
+}
+/* form inputs */
+input.form-control, textarea.form-control {
+  border: 1px solid #ccc;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: #fff;
+  resize: none;
+}
+/* page header */
+.page-header {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+.navbar-text {
+  margin-left: 15px;
+}
+.glyphicon {
+  align-items: center;
+}
+/* alerts */
+.alert-display {
+  background-color: #fff;
+}
+.alert {
+  border: none;
+  padding: 9px 12px;
+  margin-bottom: 0px;
+  text-align: center;
+  vertical-align: middle;
+}
+.alert a{
+  margin: 0;
+  padding: 0;
+  color: inherit;
+}
+/* alert fade animations */
+.alert.ng-enter,
+.alert.ng-leave {
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+}
+
+.alert.ng-enter,
+.alert.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+.alert.ng-leave,
+.alert.ng-enter.ng-enter-active {
+  opacity: 1;
+}

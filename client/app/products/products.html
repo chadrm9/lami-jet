@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="page-header">Catalog</h4>
+      <form class="form" name="form" ng-submit="vm.searchFilter(form)" novalidate>
+
+      	<div class="form-group" ng-class="{ 'has-error': form.search.$invalid && vm.submitted }">
+	      	<input type="text" name="search" id="search" class="form-control" ng-model="vm.query" 
+            placeholder="Commodity, Description, UPC, Bin" required>
+          <div class="form-group has-error">
+            <p class="help-block" ng-show="form.search.$error.required && vm.submitted" 
+              ng-bind="'Enter a search term'"></p>
+            <p class="help-block" ng-bind="vm.errors.other"></p>
+          </div>
+
+          <!-- Search/Clear buttons -->
+          <button type="submit" class="btn btn-primary" ng-click="submit">
+            <i class="glyphicon glyphicon-search"></i> Search</button>
+          
+          <button type="button" class="pull-right btn btn-default" ng-click="vm.clear()" >
+            <i class="text-muted glyphicon glyphicon-repeat"></i> Clear</button>
+
+          <!-- Loading... -->
+          <p class="help-block" ng-show="vm.loading" ng-bind="'Loading...'"></p>
+
+          <!-- Results info -->
+          <p class="help-block" ng-hide="vm.cleared"><span class="text-muted" ng-bind="'(Found '"></span>
+            <strong ng-bind="uniqueItems.length"></strong><span ng-bind="' products)'"></span></p>
+
+        </div>
+      </form>
+
+      <!-- Results -->
+      <ul ng-hide="vm.cleared" class="list-group product-list">
+        <li class="list-group-item" ng-repeat="uniqueProduct in uniqueItems = (searchItems = (vm.products | 
+                                                filter: vm.search) | unique: 'upc')">
+          <div class="product-info">
+            <a href="#" ng-click="vm.query = uniqueProduct.description; vm.searchFilter(form)">
+            <strong ng-bind="uniqueProduct.description"></strong></a><br>
+
+            <i class="text-muted glyphicon glyphicon-barcode"></i>
+            <span ng-bind="uniqueProduct.upc"></span>
+
+            <i class="text-muted glyphicon glyphicon-tag"></i>
+            <span ng-bind="uniqueProduct.bin"></span><br>
+
+            <ul class="list-group product-list">
+              <li class="list-group-item" ng-repeat="searchProduct in searchItems | 
+                filter: {upc: uniqueProduct.upc} | orderBy: ['rank','description']">
+                
+                <i class="text-muted glyphicon glyphicon-chevron-right"></i>
+                <span class="text-muted"> Rank </span><span ng-bind="searchProduct.rank"></span>
+                <span class="text-muted"> in </span>
+                <a href="#" ng-click="vm.query = searchProduct.commodity; vm.searchFilter(form)" 
+                  ng-bind="searchProduct.commodity"></a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>

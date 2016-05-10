@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="page-header">Users</h4>
+
+      <!-- Create button -->
+      <div class="form-group">
+        <button class="btn btn-primary" ui-sref="signup">
+          <i class="glyphicon glyphicon-pencil"></i> Create</button>
+      </div>
+
+      <!-- Users list -->
+      <uib-accordion close-others="true">
+        <uib-accordion-group ng-repeat="user in vm.users | orderBy: 'name'" 
+            heading="{{user.name}}" 
+            template-url="app/admin/views/user-accordion-template.html">
+          <div class="form-flex form-group">
+            <div class="secondary users">
+              <label><span class="text-muted">Name</span></label>
+            </div>
+            <div class="primary" ng-bind="'{{user.firstName}} {{user.lastName}}'"></div>
+          </div>
+          <div class="form-flex form-group">
+            <div class="secondary users">
+              <label><span class="text-muted">Email</span></label>
+            </div>
+            <div class="primary" ng-bind="user.email"></div>
+          </div>
+          <div class="form-flex form-group">
+            <div class="secondary users">
+              <label><span class="text-muted">Salesman #</span></label>
+            </div>
+            <div class="primary" ng-bind="user.salesmanNo"></div>
+          </div>
+          <div class="form-flex form-group">
+            <div class="secondary users">
+              <label><span class="text-muted">Rep Phone #</span></label>
+            </div>
+            <div class="primary" ng-bind="user.repPhoneNo"></div>
+          </div>
+
+          <!-- Edit(tba)/Delete buttons -->
+          <div class="form-group" ng-hide="user.delete">
+            <button type="button" class="btn btn-warning" ng-click="" disabled>
+              <i class="glyphicon glyphicon-edit"></i> Edit</button>
+
+            <button type="button" class="pull-right btn btn-danger" ng-click="user.delete = !user.delete">
+              <i class="glyphicon glyphicon-trash"></i> Delete</button>
+          </div>
+
+          <!-- Confirm/Cancel delete buttons -->
+          <div class="form-group" ng-show="user.delete">
+            <a type="button" class="btn btn-success" ng-click="vm.deleteUser(user)">
+              <i class="glyphicon glyphicon-ok"></i> Confirm</a>
+
+            <button type="button" class="pull-right btn btn-danger" ng-click="user.delete = !user.delete">
+              <i class="glyphicon glyphicon-remove"></i> Cancel</button>
+          </div>
+        </uib-accordion-group>
+      </uib-accordion>
+    </div>
+  </div>
+</div>
