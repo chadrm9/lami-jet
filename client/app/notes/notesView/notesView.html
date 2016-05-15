@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="page-header">Notes</h4>
+
+        <!-- noteView template -->
+        <div ui-view="noteView"></div>
+
+        <!-- Save/Cancel note edit buttons -->
+        <form>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success" form="editNote" value="Submit">
+              <i class="glyphicon glyphicon-ok"></i> Save</button>
+
+            <a type="button" class="pull-right btn btn-danger" ui-sref="notes">
+              <i class="glyphicon glyphicon-remove"></i> Cancel</a>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
