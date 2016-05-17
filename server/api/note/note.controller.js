@@ -25,7 +25,8 @@ function respondWithResult(res, statusCode) {
 
 function saveUpdates(updates) {
   return function(entity) {
-    var updated = _.merge(entity, updates);
+    // Replaced lodash merge with extend for updating child docs
+    var updated = _.extend(entity, updates);
     return updated.save()
       .then(updated => {
         return updated;
@@ -76,7 +77,7 @@ function handleError(res, statusCode) {
 // Gets a list of Notes
 export function index(req, res) {
   // Sort by timestamp
-  return Note.find().sort( { 'updatedAt': -1 } ).exec()
+  return Note.find().exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
@@ -119,7 +120,7 @@ export function destroy(req, res) {
     .catch(handleError(res));
 }
 
-/* comments APIs */
+// Create Note Comment 
 export function createComment(req, res) {
   req.body.user = req.user.id;
   Note.update({_id: req.params.id}, {$push: {comments: req.body}}, function(err, num){
@@ -128,15 +129,19 @@ export function createComment(req, res) {
     exports.show(req, res);
   })
 }
+
+// Delete Note Comment
 export function destroyComment(req, res) {
-  Note.update({_id: req.params.id}, {$pull: {comments: {_id: req.params.commentId , 'user': req.user._id}}}, function(err, num) {
+  Note.update({_id: req.params.id}, {$pull: {comments: {_id: req.params.commentId}}}, function(err, num) {
     if(err) { return handleError(res)(err); }
     if(num === 0) { return res.send(404).end(); }
     exports.show(req, res);
   });
 }
+
+// Update Note Comment
 export function updateComment(req, res) {
-  Note.update({_id: req.params.id, 'comments._id': req.params.commentId}, {'comments.$.message': req.body.message, 'comments.$.user': req.user.id}, function(err, num){
+  Note.update({_id: req.params.id, 'comments._id': req.params.commentId}, {'comments.$.message': req.body.message, 'comments.$.user': req.user.id, 'comments.$.updatedAt': new Date()}, function(err, num){
     if(err) { return handleError(res)(err); }
     if(num === 0) { return res.send(404).end(); }
     exports.show(req, res);

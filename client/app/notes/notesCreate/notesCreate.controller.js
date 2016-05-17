@@ -1,7 +1,7 @@
 'use strict';
 (function(){
 
-  class NotesEditComponent {
+  class NotesCreateComponent {
     constructor($state, Auth, notesService, focus, alertService) {
       this.$state = $state;
       this.getCurrentUser = Auth.getCurrentUser;
@@ -16,19 +16,17 @@
     }
 
     $onInit() {
-      // Fetch note
-      this.notesService.fetchNote(this.$state.params.id).then(response => {
-        this.note = response;
-      });
+      this.note.user = this.getCurrentUser();
+      this.focus('title');
     }
 
     saveNote(form) {
       if (form.$valid) {
-        // Update note
-        this.notesService.updateNote(this.note).then(() => {
-          // State => notesView, params.id: 'note._id'
-          this.$state.go('notesView', {id:this.note._id});
-          this.alertService.add('success', 'Note saved!', 5000);
+        // Create note
+        this.notesService.createNote(this.note).then(() => {
+          // State => notes
+          this.$state.go('notes');
+          this.alertService.add('success', 'Note created!', 5000);
           this.note = {};
           this.submitted = false;
         });
@@ -46,9 +44,9 @@
   }
 
   angular.module('lamiJetApp')
-    .component('notesEdit', {
-      templateUrl: 'app/notes/notesEdit/notesEdit.html',
-      controller: NotesEditComponent,
+    .component('notesCreate', {
+      templateUrl: 'app/notes/notesCreate/notesCreate.html',
+      controller: NotesCreateComponent,
       controllerAs: 'vm'
     });
 

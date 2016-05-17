@@ -1,0 +1,20 @@
+<form class="form" id="editComment" name="editComment" ng-submit="vm.saveComment(editComment)" novalidate>
+  
+  <!-- Comment -->
+  <div class="form-flex form-group" ng-class="{ 'has-error': editComment.comment.$invalid && vm.submitted }">
+    <div class="secondary notes">
+      <label for="comment"><span class="text-muted">Comment</span></label>
+    </div><div class="primary">
+      <textarea id="comment" name="comment" class="form-control" ng-model="vm.comment.message" 
+        placeholder="Message" rows="1" msd-elastic required></textarea>
+    </div>
+  </div>
+  <div class="form-flex form-group error" ng-class="{ 'has-error': editComment.comment.$invalid 
+                                                                    && vm.submitted }">
+    <div class="secondary notes"></div>
+    <div class="primary">
+      <p class="help-block" ng-show="editComment.comment.$error.required && vm.submitted" 
+        ng-bind="'Enter a comment'"></p>
+    </div>
+  </div>
+</form>

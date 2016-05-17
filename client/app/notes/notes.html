@@ -5,8 +5,9 @@
 
       <!-- Create, Sort, Clear buttons -->
       <div class="form-group">
-      <a type="button" class="btn btn-primary" ui-sref="notesEdit">
-        <i class="glyphicon glyphicon-pencil"></i> Create</a>
+        <!-- State => notesCreate -->
+        <a type="button" class="btn btn-primary" ui-sref="notesCreate">
+          <i class="glyphicon glyphicon-pencil"></i> Create</a>
 
         <div class="pull-right">
           <button type="button" class="btn btn-default" ng-click="vm.sortReverse()">
@@ -20,10 +21,15 @@
 
       <!-- List notes -->
       <ul class="list-group note-list">
-        <li class="list-group-item" ng-repeat="note in vm.notes | orderBy:note.updatedAt : vm.sortDirection | filter: vm.filter">
-          <i class="text-muted glyphicon glyphicon-time"></i>
-          <span class="text-muted" ng-bind="note.updatedAt | date: 'EEE MMM dd h:mm a'"></span>
+        <!-- Order by createdAt -->
+        <li class="list-group-item" ng-repeat="note in vm.notes | orderBy:'createdAt' : vm.sortDirection | filter: vm.filter">
+          <span class="text-muted">
+            <i class="glyphicon glyphicon-time"></i>
+            <!-- Display updatedAt -->
+            <span ng-bind="note.updatedAt | date: 'EEE MMM dd h:mm a'"></span>
+          </span>
 
+          <!-- Note details -->
           <div class="pull-right">
             <i class="text-muted glyphicon glyphicon-user"></i>
             <a href="#" ng-click="vm.filter.user.name ? vm.filter = '' : 
@@ -32,31 +38,44 @@
 
           <div class="form-group">
             <span><strong ng-bind="note.title"></strong></span><br>
-            <span ng-bind="note.message"></span>
+            <span class="newlines" ng-bind="note.message"></span><br>
+            <span class="text-muted">
+              <i class="glyphicon glyphicon-comment"></i>
+              <span ng-bind="note.comments.length + ' comment'"></span><span ng-bind="'s'"
+                    ng-show="note.comments.length !== 1"></span>
+            </span>
           </div>
 
-          <!-- Edit/Delete buttons -->
-          <div class="form-group">
-            <div ng-hide="note.delete">
-              <!-- <a type="button" class="btn btn-info" ui-sref="notesEdit({id:note._id})">
-                <span ng-bind="note.comments.length"></span> Comments</a> -->
+          <!-- View, Edit, Delete buttons -->
+          <div class="form-flex form-group" ng-hide="note.delete">
+            <div class="secondary">
+              <!-- State => notesView, params.id: 'note._id' -->
+              <a type="button" class="btn btn-info" ui-sref="notesView({id:note._id})">
+                <i class="glyphicon glyphicon-unchecked"></i> View</a>
+            </div>
+            <div class="primary">
+              <div class="pull-right">
+                <!-- Owner, Admin can delete -->
+                <div ng-show="vm.isOwnerOrAdmin(note.user.name)">
+                  <!-- Owner can edit -->
+                  <!-- State => notesEdit, params.id: 'note._id' -->
+                  <a type="button" class="btn btn-warning" ng-show="vm.isOwner(note.user.name)"
+                    ui-sref="notesEdit({id:note._id})"><i class="glyphicon glyphicon-edit"></i> Edit</a>
 
-              <div ng-show="vm.userCanEdit(note.user.name)">
-                <a type="button" class="btn btn-warning" ui-sref="notesEdit({id:note._id})">
-                  <i class="glyphicon glyphicon-edit"></i> Edit</a>
-
-                <button class="pull-right btn btn-danger" ng-click="note.delete = !note.delete">
-                  <i class="glyphicon glyphicon-trash"></i> Delete</button>
+                  <button class="btn btn-danger" ng-click="note.delete = !note.delete">
+                    <i class="glyphicon glyphicon-trash"></i> Delete</button>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div ng-show="note.delete">
-              <button class="btn btn-success" ng-click="vm.deleteNote(note._id)">
-                <i class="glyphicon glyphicon-ok"></i> Confirm</button>
+          <!-- Show delete -> confirm, cancel buttons -->
+          <div class="form-group" ng-show="note.delete">
+            <button class="btn btn-success" ng-click="vm.deleteNote(note._id)">
+              <i class="glyphicon glyphicon-ok"></i> Confirm</button>
 
-              <button class="pull-right  btn btn-danger" ng-click="note.delete = !note.delete">
-                <i class="glyphicon glyphicon-remove"></i> Cancel</button>
-            </div>
+            <button class="pull-right btn btn-danger" ng-click="note.delete = !note.delete">
+              <i class="glyphicon glyphicon-remove"></i> Cancel</button>
           </div>
         </li>
       </ul>

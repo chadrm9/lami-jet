@@ -1,5 +1,7 @@
 <form class="form" id="editNote" name="editNote" ng-submit="vm.saveNote(editNote)" novalidate>
+  <div class="form-group"></div>
 
+  <!-- Title -->
   <div class="form-flex form-group" ng-class="{ 'has-error': editNote.title.$invalid && vm.submitted }">
 
     <div class="secondary notes">
@@ -18,13 +20,13 @@
     </div>
   </div>
   
-
+  <!-- Message -->
   <div class="form-flex form-group" ng-class="{ 'has-error': editNote.message.$invalid && vm.submitted }">
     <div class="secondary notes">
       <label for="message"><span class="text-muted">Message</span></label>
     </div><div class="primary">
       <textarea id="message" name="message" class="form-control" ng-model="vm.note.message" 
-        placeholder="Message" rows="1" msd-elastic required></textarea>
+        placeholder="Message" msd-elastic required></textarea>
     </div>
   </div>
   <div class="form-flex form-group error" ng-class="{ 'has-error': editNote.message.$invalid 

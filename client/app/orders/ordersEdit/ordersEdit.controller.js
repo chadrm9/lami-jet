@@ -34,6 +34,7 @@
     }
 
     $onInit() {
+      this.pageHeader.push('Orders');
       // Setup inline datepickers
       this.dateFormat = 'MM-dd-yy';
       // this.maxDt = new Date();
@@ -58,8 +59,8 @@
 
           // Fetch existing order
           if(this.$state.params.id) {
+            this.pageHeader.push('Edit Order');
             this.ordersService.fetchOrder(this.$state.params.id).then(response => {
-              this.pageHeader.push('Edit Order');
               this.order = response;
               this.fullName = this.order.user.firstName + ' ' + this.order.user.lastName;
               this.districtMgr = this.order.user.districtMgr.firstName + ' ' + 

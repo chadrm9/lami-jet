@@ -7,6 +7,9 @@
       this.getCurrentUser = Auth.getCurrentUser;
       this.ordersService = ordersService;
       this.alertService = alertService;
+
+      // Descending by servicedDate
+      this.sortDirection = true;
     }
 
     $onInit() {
@@ -40,7 +43,7 @@
     }
 
     // Check user is owner or admin
-    userCanEdit(user) {
+    isOwnerOrAdmin(user) {
       if (this.getCurrentUser().name === user || this.isAdmin()) {
         return true;
       }

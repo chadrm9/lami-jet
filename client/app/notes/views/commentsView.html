@@ -1,0 +1,20 @@
+ <ul class="list-group comment-list">
+  <!-- Order by createdAt -->
+  <li class="list-group-item" ng-repeat="comment in vm.note.comments | orderBy:'createdAt' : 
+                                                    vm.sortDirection | filter: vm.filter">
+    <i class="text-muted glyphicon glyphicon-time"></i>
+    <!-- Display updatedAt -->
+    <span class="text-muted" ng-bind="comment.updatedAt | date: 'EEE MMM dd h:mm a'"></span>
+
+    <!-- Note details -->
+    <div class="pull-right text-muted">
+      <i class="glyphicon glyphicon-user"></i>
+      <span ng-bind="comment.user.name"></span>
+    </div>
+
+    <div class="form-group">
+      <span class="newlines" ng-bind="comment.message"></span>
+    </div>
+
+  </li>
+</ul>

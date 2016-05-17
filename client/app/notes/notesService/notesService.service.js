@@ -40,8 +40,8 @@ angular.module('lamiJetApp')
       });
     };
 
-    // Submit comment
-    notesService.submitComment = function(id, comment) {
+    // Save comment
+    notesService.saveComment = function(id, comment) {
       return $http.post('/api/notes/' + id + '/comments', comment).then(response => {
         return response.data;
       });
@@ -49,7 +49,7 @@ angular.module('lamiJetApp')
 
     // Update comment
     notesService.updateComment = function(id, comment) {
-      return $http.put('/api/notes/' + id + '/comments/' + comment._id).then(response => {
+      return $http.put('/api/notes/' + id + '/comments/' + comment._id, comment).then(response => {
         return response.data;
       });
     };

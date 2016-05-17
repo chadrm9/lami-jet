@@ -83,6 +83,9 @@ input.form-control, textarea.form-control {
   background-color: #fff;
   resize: none;
 }
+.newlines {
+  white-space: pre-line;
+}
 /* page header */
 .page-header {
   margin-top: 0;

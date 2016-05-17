@@ -40,7 +40,7 @@
           <div class="form-group">
             <div ng-hide="vm.cancel">
               <button type="submit" class="btn btn-success" form="editInvoice" value="Submit">
-                <i class="glyphicon glyphicon-plus"></i> Save</button>
+                <i class="glyphicon glyphicon-ok"></i> Save</button>
                 
               <button type="button" class="pull-right btn btn-danger" 
                 ng-click="vm.resetInvoice()">
@@ -58,7 +58,7 @@
           <div class="form-group">
             <div ng-hide="vm.cancel">
               <button type="submit" class="btn btn-success" form="editItem" value="Submit">
-                <i class="glyphicon glyphicon-plus"></i> Save</button>
+                <i class="glyphicon glyphicon-ok"></i> Save</button>
                 
               <button type="button" class="pull-right btn btn-danger" 
                 ng-click="vm.resetItem()">
@@ -72,7 +72,7 @@
 
         <!-- Add invoice button -->
         <div class="form-flex form-group">
-          <div class="secondary orders">
+          <div class="secondary">
             <span class="text-muted">
               <i class="glyphicon glyphicon-file"></i> 
               Invoice<span ng-if="vm.order.invoices.length != 1">s </span>
@@ -92,7 +92,7 @@
 
         <!-- Add item button -->
         <div class="form-flex form-group">
-          <div class="secondary orders">
+          <div class="secondary">
             <span class="text-muted">
               <i class="glyphicon glyphicon-barcode"></i> 
               Item<span ng-if="vm.order.items.length != 1">s </span>

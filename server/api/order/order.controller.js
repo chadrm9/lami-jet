@@ -80,7 +80,7 @@ export function index(req, res) {
   if(req.user.role === 'admin') {
     findStr = '';
   }
-  return Order.find(findStr).sort( { 'dateServiced': -1 } ).exec()
+  return Order.find(findStr).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

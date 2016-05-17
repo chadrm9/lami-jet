@@ -1,18 +1,18 @@
-.note-list {
+.note-list, comment-list {
 	margin: 0;
 }
 .form-flex .secondary.notes {
   min-width: 70px;
 }
-.note-list li {
+.note-list li, .comment-list li {
 	border: none;
 	border-bottom: 1px solid #eee;
 	margin-bottom: 0px;
 	padding: 12px 0 0px 0;
 }
-.note-list li:first-child {
+.note-list li:first-child, .comment-list li:first-child {
 	border-top: 1px solid #eee;
 }
-.note-list li:last-child {
+.note-list li:last-child, .comment-list li:last-child {
 	border-bottom: none;
 }

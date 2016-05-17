@@ -1,21 +1,40 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h4 class="page-header">Notes</h4>
+      <h4 class="page-header">
+        <!-- State => notes -->
+        <a ui-sref="notes">Notes</a> > Edit Note
+      </h4>
 
-        <!-- noteEdit template -->
-        <div ui-view="noteEdit"></div>
+      <!-- Note details -->
+      <div ng-show="vm.note.createdAt">
+        <i class="text-muted glyphicon glyphicon-time"></i>
+        <!-- Display updatedAt -->
+        <span class="text-muted" ng-bind="vm.note.updatedAt | date: 'EEE MMM dd h:mm a'"></span>
 
-        <!-- Save/Cancel note edit buttons -->
-        <form>
-          <div class="form-group">
-            <button type="submit" class="btn btn-success" form="editNote" value="Submit">
-              <i class="glyphicon glyphicon-ok"></i> Save</button>
+        <div class="pull-right">
+          <i class="text-muted glyphicon glyphicon-user"></i>
+          <span class="text-muted" ng-bind="vm.note.user.name"></span>
+        </div>
+      </div>
 
-            <a type="button" class="pull-right btn btn-danger" ui-sref="notes">
-              <i class="glyphicon glyphicon-remove"></i> Cancel</a>
-          </div>
-        </form>
+      <!-- noteEdit template -->
+      <div ui-view="noteEdit"></div>
+
+      <div class="form-group">
+        <!-- Submit editNote to saveNote(form) -->
+        <button type="submit" class="btn btn-success" form="editNote" value="Submit">
+          <i class="glyphicon glyphicon-ok"></i> Save</button>
+        
+        <!-- State => notesView, params.id: vm.note._id -->
+        <button type="button" class="pull-right btn btn-danger" 
+          ui-sref="notesView({id:vm.note._id})"><i class="glyphicon glyphicon-new-window"></i> 
+          Cancel</button>
+      </div>
+
+      <!-- noteView template -->
+      <div ui-view="commentsView"></div>
+
     </div>
   </div>
 </div>

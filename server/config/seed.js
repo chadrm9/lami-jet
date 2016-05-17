@@ -78,6 +78,12 @@ Note.find({}).remove()
       user:    {_id: '000000000000000000000000'},
       title:   'Server and Client integration',
       message: 'Built with a powerful and fun stack: MongoDB, Express, ',
+      comments: [
+        {message: 'And then???', user: {_id: '572250bbeca3740300e516d0'}},
+        {message: 'Angular and Node', user: {_id: '000000000000000000000000'}},
+        {message: 'full stack ftw?!', user: {_id: '572250bbeca3740300e516d0'}},
+        {message: 'And How!', user: {_id: '000000000000000000000000'}}
+      ]
     }, {
       user:    {_id: '000000000000000000000002'},
       title:   'Smart Build System',
@@ -95,6 +101,10 @@ Note.find({}).remove()
       user:    {_id: '000000000000000000000002'},
       title:   'Optimized Build',
       message: 'Build process packs up your templates as a single JavaScript ',
+      comments: [
+        {message: '1 2 BBQ', user: {_id: '572250bbeca3740300e516d0'}},
+        {message: 'OI OI OI', user: {_id: '000000000000000000000000'}}
+      ]
     }, {
       user:    {_id: '000000000000000000000000'},
       title:   'Deployment Ready',
@@ -193,7 +203,8 @@ Note.find({}).remove()
         {aisle: '073', description: 'xxxxxxxxxxxxxxxx', upc: '9876543210', quantity: '10'},
         {aisle: 'XXX', description: 'xxxxxxxxxxxxxxxx', upc: '9876543210', quantity: '10'},
         {aisle: 'XXX', description: 'xxxxxxxxxxxxxxxx', upc: '9876543210', quantity: '10'}
-      ]
+      ],
+      sent: '01/02/16'
     }, {
       user:    {_id: '000000000000000000000000'},
       chainStore: 'ZKRLO 666',

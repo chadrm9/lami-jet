@@ -19,7 +19,8 @@
       <form>
         <!-- Orders List -->
         <ul class="list-group order-list">
-          <li class="list-group-item" ng-show="vm.userCanEdit(order.user.name)" ng-repeat="order in vm.orders | orderBy:order.dateServiced : vm.sortDirection | filter: vm.filter">
+          <!-- User see thier own orders, Admin see all orders -->
+          <li class="list-group-item" ng-show="vm.isOwnerOrAdmin(order.user.name)" ng-repeat="order in vm.orders | orderBy:'dateServiced' : vm.sortDirection | filter: vm.filter">
             <div class="form-group">
               <div class="pull-right" ng-show="vm.isAdmin()">
                 <i class="text-muted glyphicon glyphicon-user"></i>

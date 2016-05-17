@@ -1,0 +1,49 @@
+ <ul class="list-group comment-list">
+  <!-- Order by createdAt -->
+  <li class="list-group-item" ng-repeat="comment in vm.note.comments | orderBy:'createdAt' : 
+                                                    vm.sortDirection | filter: vm.filter">
+    <i class="text-muted glyphicon glyphicon-time"></i>
+    <!-- Display updatedAt -->
+    <span class="text-muted" ng-bind="comment.updatedAt | date: 'EEE MMM dd h:mm a'"></span>
+
+    <!-- Note details -->
+    <div class="pull-right">
+      <i class="text-muted glyphicon glyphicon-user"></i>
+      <a href="#" ng-click="vm.filter.user.name ? vm.filter = '' : vm.filter.user.name = comment.user.name"
+        ng-bind="comment.user.name"></a>
+    </div>
+
+    <div class="form-group">
+      <span class="newlines" ng-bind="comment.message"></span>
+    </div>
+    
+    <!-- Owner, Admin can delete -->
+    <div ng-show="vm.isOwnerOrAdmin(comment.user.name)">
+    
+    <!-- Hide edit/delete buttons -->
+      <div ng-hide="comment.delete">
+        <div class="form-flex form-group">
+          <div class="secondary"></div>
+          <div class="primary">
+            <div class="pull-right">
+              <!-- Owner can edit -->
+              <button class="btn btn-warning" ng-show="vm.isOwner(comment.user.name)" 
+                ng-click="vm.editComment(comment)"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+
+              <button class="btn btn-danger" ng-click="comment.delete = !comment.delete">
+                <i class="glyphicon glyphicon-trash"></i> Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Show delete -> confirm, cancel buttons -->
+      <div class="form-group" ng-show="comment.delete">
+        <button class="btn btn-success" ng-click="vm.deleteComment(comment._id)">
+          <i class="glyphicon glyphicon-ok"></i> Confirm</button>
+        <button class="pull-right  btn btn-danger" ng-click="comment.delete = !comment.delete">
+            <i class="glyphicon glyphicon-remove"></i> Cancel</button>
+      </div>
+    </div>
+  </li>
+</ul>

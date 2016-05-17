@@ -5,12 +5,11 @@
     constructor(Auth, notesService, alertService) {
       this.isAdmin = Auth.isAdmin;
       this.getCurrentUser = Auth.getCurrentUser;
-
       this.notesService = notesService;
       this.alertService = alertService;
 
-      this.filter = '';
-      this.sortDirection = false;
+      // Descending by createdAt
+      this.sortDirection = true;
     }
 
     $onInit() {
@@ -21,6 +20,7 @@
     }
 
     deleteNote(id) {
+      // Delete note
       this.notesService.deleteNote(id).then(() => {
         this.notesService.fetchNotes().then(response => {
           this.notes = response;
@@ -35,8 +35,18 @@
     }
 
     // Check user is owner or admin
-    userCanEdit(user) {
+    isOwnerOrAdmin(user) {
       if (this.getCurrentUser().name === user || this.isAdmin()) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+
+    // Check user is owner
+    isOwner(user) {
+      if (this.getCurrentUser().name === user) {
         return true;
       }
       else {
