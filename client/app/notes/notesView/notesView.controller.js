@@ -25,6 +25,10 @@
       // Fetch note
       this.notesService.fetchNote(this.$state.params.id).then(response => {
         this.note = response;
+      })
+      .catch(err => {
+        // State => notes
+        this.$state.go('notes');
       });
     }
 
