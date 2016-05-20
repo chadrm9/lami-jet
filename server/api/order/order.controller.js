@@ -262,7 +262,6 @@ function handleXlsx() {
       sendgrid.send(payload, function(err, json) {
         if (err) { 
           console.error(err);
-          console.log(json);
         }
       });
       

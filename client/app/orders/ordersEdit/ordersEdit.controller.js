@@ -88,6 +88,7 @@
         // Update existing order
         if(this.$state.params.id) {
           this.ordersService.updateOrder(this.order).then(() => {
+            // State => orders
             this.$state.go('orders');
             this.alertService.add('success', 'Order saved!', 5000);
           });
@@ -95,6 +96,7 @@
         // Create new order
         else {
           this.ordersService.createOrder(this.order).then(() => {
+            // State => orders
             this.$state.go('orders');
             this.alertService.add('success', 'Order created!', 5000);
           });
