@@ -181,13 +181,6 @@
       this.edit = next;
     }
 
-    // Fetch products once for edit item upc
-    loadProducts() {
-      this.productsService.fetchProducts().then(response => {
-        this.products = response;
-      });
-    }
-
     toggleDateServicedCal() {
       this.dateServicedCal = !this.dateServicedCal;
     }
