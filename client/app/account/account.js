@@ -7,12 +7,18 @@ angular.module('lamiJetApp')
         url: '/login',
         templateUrl: 'app/account/login/login.html',
         controller: 'LoginController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        ncyBreadcrumb: {
+          label: 'Login'
+        }
       })
       .state('logout', {
         url: '/logout?referrer',
         referrer: 'login',
         template: '',
+        ncyBreadcrumb: {
+          label: 'Logout'
+        },
         controller: function($state, Auth) {
           var referrer = $state.params.referrer ||
                           $state.current.referrer ||
@@ -26,14 +32,21 @@ angular.module('lamiJetApp')
         templateUrl: 'app/account/signup/signup.html',
         controller: 'SignupController',
         controllerAs: 'vm',
-        authenticate: 'admin'
+        authenticate: 'admin',
+        ncyBreadcrumb: {
+          label: 'Create User',
+          parent: 'admin'
+        }
       })
       .state('settings', {
         url: '/settings',
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsController',
         controllerAs: 'vm',
-        authenticate: true
+        authenticate: true,
+        ncyBreadcrumb: {
+          label: 'Settings'
+        }
       });
   })
   .run(function($rootScope) {

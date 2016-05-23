@@ -1,7 +1,7 @@
 'use strict';
 (function(){
 
-  class OrdersComponent {
+  class OrdersListComponent {
     constructor(Auth, ordersService, alertService) {
       this.isAdmin = Auth.isAdmin;
       this.getCurrentUser = Auth.getCurrentUser;
@@ -55,9 +55,9 @@
   }
 
   angular.module('lamiJetApp')
-    .component('orders', {
-      templateUrl: 'app/orders/orders.html',
-      controller: OrdersComponent,
+    .component('ordersList', {
+      templateUrl: 'app/orders/ordersList/ordersList.html',
+      controller: OrdersListComponent,
       controllerAs: 'vm'
     });
 

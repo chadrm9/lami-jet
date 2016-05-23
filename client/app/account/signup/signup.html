@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h4 class="page-header">Users</h4>
+      <h4 class="page-header"><div ncy-breadcrumb></div></h4>
+      <h5>
+        <i class="text-muted glyphicon glyphicon-user"></i>
+        <span ng-bind="'Create User:'"></span>
+      </h5><br>
       <form class="form" name="form" ng-submit="vm.register(form)" novalidate>
 
         <!-- Username -->
@@ -116,7 +120,7 @@
           </div>
           <div class="primary">
             <input type="text" id="repPhoneNo" name="repPhoneNo" class="form-control" 
-              ng-model="vm.user.repPhoneNo" placeholder="(123)456-789" required/>
+              ng-model="vm.user.repPhoneNo" placeholder="(123) 456-789" required/>
           </div>
         </div>
         <div class="form-flex form-group error" ng-class="{ 'has-error': form.repPhoneNo.$invalid 

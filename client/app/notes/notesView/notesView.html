@@ -20,7 +20,7 @@
           <span class="newlines" ng-bind="vm.note.message"></span>
         </div>
 
-        <!-- Add Comment button -->
+        <!-- Add comment button -->
         <div class="form-flex form-group" ng-hide="vm.add">
           <div class="secondary">
             <button type="button" class="btn btn-info" ng-click="vm.add = !vm.add" 
@@ -28,7 +28,7 @@
               Comment</button>
           </div>
 
-          <!-- Edit button -->
+          <!-- Edit note button -->
           <div class="primary">
             <div class="pull-right">
               <!-- Owner can edit -->
@@ -40,11 +40,11 @@
           </div>
         </div>
 
-        <div ng-show="vm.add">
+        <div class="add" ng-show="vm.add">
           <!-- commentEdit template -->
           <div ui-view="commentEdit"></div>
 
-          <!-- Comment Save, Cancel buttons -->
+          <!-- Save/Cancel comment buttons -->
           <div class="form-group">
             <!-- Submit editComment to saveComment(form) -->
             <button type="submit" class="btn btn-success" form="editComment" value="Submit">
@@ -59,7 +59,7 @@
         <div class="form-flex form-group border-top">
           <div class="secondary">
             <i class="text-muted glyphicon glyphicon-comment"></i>
-            <strong class="text-muted" ng-bind="' Comments (' + vm.note.comments.length + ')'"></strong>
+            <span ng-bind="' Comments'"></span><span class="text-muted" ng-bind="' ('"></span><span ng-bind="vm.note.comments.length"></span><span class="text-muted" ng-bind="')'"></span>
           </div>
 
           <!-- Sort, Clear buttons -->

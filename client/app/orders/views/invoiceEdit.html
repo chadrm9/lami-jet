@@ -1,3 +1,10 @@
+<h5>
+  <i class="text-muted glyphicon glyphicon-file"></i>
+  <span ng-show="vm.notNew" ng-bind="'Edit'"></span>
+  <span ng-hide="vm.notNew" ng-bind="'Add'"></span>
+  <span ng-bind="' Invoice:'"></span>
+</h5><br>
+
 <form class="form" id="editInvoice" name="editInvoice" ng-submit="vm.saveInvoice(editInvoice)" novalidate>
 
   <!-- Invoice # -->

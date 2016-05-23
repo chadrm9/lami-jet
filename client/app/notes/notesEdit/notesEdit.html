@@ -33,7 +33,7 @@
         <div class="form-flex form-group border-top">
           <div class="secondary">
             <i class="text-muted glyphicon glyphicon-comment"></i>
-            <strong class="text-muted" ng-bind="' Comments (' + vm.note.comments.length + ')'"></strong>
+            <span ng-bind="' Comments'"></span><span class="text-muted" ng-bind="' ('"></span><span ng-bind="vm.note.comments.length"></span><span class="text-muted" ng-bind="')'"></span>
           </div>
 
           <!-- Sort, Clear buttons -->

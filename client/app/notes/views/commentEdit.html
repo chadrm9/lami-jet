@@ -1,3 +1,10 @@
+<h5>
+  <i class="text-muted glyphicon glyphicon-comment"></i>
+  <span ng-show="vm.notNew" ng-bind="'Edit'"></span>
+  <span ng-hide="vm.notNew" ng-bind="'Add'"></span>
+  <span ng-bind="' Comment:'"></span>
+</h5><br>
+
 <form class="form" id="editComment" name="editComment" ng-submit="vm.saveComment(editComment)" novalidate>
   
   <!-- Comment -->

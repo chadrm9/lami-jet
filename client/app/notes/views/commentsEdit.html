@@ -20,7 +20,7 @@
     <!-- Owner, Admin can delete -->
     <div ng-show="vm.isOwnerOrAdmin(comment.user.name)">
     
-    <!-- Hide edit/delete buttons -->
+    <!-- Hide Edit/Delete buttons -->
       <div ng-hide="comment.delete">
         <div class="form-flex form-group">
           <div class="secondary"></div>
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <!-- Show delete -> confirm, cancel buttons -->
+      <!-- Show Delete -> Confirm/Cancel buttons -->
       <div class="form-group" ng-show="comment.delete">
         <button class="btn btn-success" ng-click="vm.deleteComment(comment._id)">
           <i class="glyphicon glyphicon-ok"></i> Confirm</button>

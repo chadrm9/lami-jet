@@ -22,18 +22,18 @@ angular.module('lamiJetApp', [
     $locationProvider.html5Mode(true);
   })
   .run(function ($rootScope, $location, Auth, $cookieStore) {
-  // Redirect to login if route requires auth and you're not logged in
-  $rootScope.$on('$stateChangeStart', function (event, next) {
-    Auth.isLoggedIn(function(loggedIn) {
-      if (next.authenticate && !loggedIn) {
+    // Redirect to login if route requires auth and you're not logged in
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+      Auth.isLoggedIn(function(loggedIn) {
+        if (next.authenticate && !loggedIn) {
 
-        // Store the requested url if not logged in
-        if ($location.url() !== '/login')
-        {
-            $cookieStore.put('returnUrl', $location.url());
+          // Store the requested url if not logged in
+          if ($location.url() !== '/login')
+          {
+              $cookieStore.put('returnUrl', $location.url());
+          }
+          $location.path('/login');
         }
-        $location.path('/login');
-      }
+      });
     });
   });
-});

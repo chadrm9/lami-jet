@@ -21,7 +21,7 @@
         this.note = response;
       })
       .catch(err => {
-        console.log(json);
+        console.error(err);
         // State => notes
         this.$state.go('notes');
       });

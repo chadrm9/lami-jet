@@ -29,6 +29,10 @@ h5 {
 	background-color: transparent;
 	cursor:	default;
 }
+.details {
+	border-top: 1px solid #eee;
+	padding-top: 12px;
+}
 .invoice-list, .item-list {
 	margin-bottom: 12px;
 }

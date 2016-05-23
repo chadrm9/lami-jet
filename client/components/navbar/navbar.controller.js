@@ -8,7 +8,7 @@ class NavbarController {
     'icon':  'book'
   },{
     'title': 'Orders',
-    'state': 'orders',
+    'state': 'orders.list',
     'icon':  'shopping-cart'
   },{
     'title': 'Notes',

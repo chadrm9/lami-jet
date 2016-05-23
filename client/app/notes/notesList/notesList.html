@@ -39,12 +39,13 @@
           <div class="form-group">
             <span><strong ng-bind="note.title"></strong></span><br>
             <span class="newlines" ng-bind="note.message"></span><br>
-            <strong class="text-muted">
-              <i class="glyphicon glyphicon-comment"></i>
-              <span ng-bind="' Comment'"></span><span ng-bind="'s'"
+            
+            <i class="text-muted glyphicon glyphicon-comment"></i>
+            <span ng-bind="note.comments.length"></span>
+            <span class="text-muted">
+              <span ng-bind="' comment'"></span><span ng-bind="'s'"
                     ng-show="note.comments.length !== 1"></span>
-              <span ng-bind="' (' + note.comments.length + ')'"
-            </strong>
+            </span>
           </div>
 
           <!-- View, Edit, Delete buttons -->
@@ -70,7 +71,7 @@
             </div>
           </div>
 
-          <!-- Show delete -> confirm, cancel buttons -->
+          <!-- Show Delete -> Confirm/Cancel buttons -->
           <div class="form-group" ng-show="note.delete">
             <button class="btn btn-success" ng-click="vm.deleteNote(note._id)">
               <i class="glyphicon glyphicon-ok"></i> Confirm</button>

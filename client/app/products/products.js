@@ -6,6 +6,9 @@ angular.module('lamiJetApp')
       .state('products', {
         url: '/products',
         template: '<products></products>',
-        'authenticate': 'true'
+        'authenticate': 'true',
+        ncyBreadcrumb: {
+          label: 'Catalog'
+        }
       });
   });

@@ -8,6 +8,9 @@ angular.module('lamiJetApp.admin')
         controller: 'AdminController',
         controllerAs: 'vm',
         authenticate: 'admin',
-        templateUrl: 'app/admin/admin.html'
+        templateUrl: 'app/admin/admin.html',
+        ncyBreadcrumb: {
+          label: 'Admin'
+        }
       });
   });

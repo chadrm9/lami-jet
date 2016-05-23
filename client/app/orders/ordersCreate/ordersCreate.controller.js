@@ -1,7 +1,7 @@
 'use strict';
 (function(){
 
-  class OrdersEditComponent {
+  class OrdersCreateComponent {
     constructor(ordersService, $templateRequest, productsService, $state, Auth, focus, alertService) {
       this.ordersService = ordersService;
       this.$templateRequest = $templateRequest;
@@ -45,29 +45,27 @@
           // Edit details, invoice, or item
           this.edit = 'details';  
 
-          // Fetch existing order
-          this.ordersService.fetchOrder(this.$state.params.id).then(response => {
-            this.order = response;
-            this.fullName = this.order.user.firstName + ' ' + this.order.user.lastName;
-            this.districtMgr = this.order.user.districtMgr.firstName + ' ' + 
-                               this.order.user.districtMgr.lastName;
-            this.order.dateServiced = new Date(this.order.dateServiced);
-            this.order.dateInStore = new Date(this.order.dateInStore);
-          });
+          // Start new order
+          this.order.user = this.getCurrentUser();
+          this.fullName = this.order.user.firstName + ' ' + this.order.user.lastName;
+          this.districtMgr = this.order.user.districtMgr.firstName + ' ' + 
+                             this.order.user.districtMgr.lastName;
+          this.focus('chainStore');
         });
       });
     }
 
     saveOrder(form) {
       if(form.$valid) {
-        // Update existing order
-        this.ordersService.updateOrder(this.order).then(() => {
+        // Create new order
+        this.ordersService.createOrder(this.order).then(() => {
           this.order = {};
           this.submitted = false;
           // State => orders.list
           this.$state.go('orders.list');
-          this.alertService.add('success', 'Order saved!', 5000);
+          this.alertService.add('success', 'Order created!', 5000);
         });
+        
       }
       else {
         this.submitted = true;
@@ -205,9 +203,9 @@
   }
 
   angular.module('lamiJetApp')
-    .component('ordersEdit', {
-      templateUrl: 'app/orders/ordersEdit/ordersEdit.html',
-      controller: OrdersEditComponent,
+    .component('ordersCreate', {
+      templateUrl: 'app/orders/ordersCreate/ordersCreate.html',
+      controller: OrdersCreateComponent,
       controllerAs: 'vm'
     });
 

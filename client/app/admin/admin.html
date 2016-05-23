@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h4 class="page-header">Users</h4>
+      <h4 class="page-header"><div ncy-breadcrumb></div></h4>
 
       <!-- Create button -->
       <div class="form-group">
@@ -39,7 +39,7 @@
             <div class="primary" ng-bind="user.repPhoneNo"></div>
           </div>
 
-          <!-- Edit(tba)/Delete buttons -->
+          <!-- Edit(tba), Delete buttons -->
           <div class="form-group" ng-hide="user.delete">
             <button type="button" class="btn btn-warning" ng-click="" disabled>
               <i class="glyphicon glyphicon-edit"></i> Edit</button>
@@ -48,7 +48,7 @@
               <i class="glyphicon glyphicon-trash"></i> Delete</button>
           </div>
 
-          <!-- Confirm/Cancel delete buttons -->
+          <!-- Show Delete -> Confirm/Cancel buttons -->
           <div class="form-group" ng-show="user.delete">
             <a type="button" class="btn btn-success" ng-click="vm.deleteUser(user)">
               <i class="glyphicon glyphicon-ok"></i> Confirm</a>

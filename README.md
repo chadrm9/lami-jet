@@ -1,4 +1,4 @@
-# LaMi-Jet
+# LaMi-Jet v1.0.0
 
 A mobile web application that supplies merchandisers with electronic catalog search and mobile ordering capabilities. 
 

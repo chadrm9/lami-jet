@@ -7,8 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <base href="/">
-    <title></title>
-    <meta name="description" content="">
+    <meta name="description" content="LaMi-Jet">
     <meta name="viewport" content="width=device-width">
     <!-- Disable zooming -->
     <meta content='initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -42,6 +41,7 @@
     <!-- build:css({.tmp,client}) app/app.css -->
       <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
+      <link rel="stylesheet" href="app/account/settings/settings.css">
       <link rel="stylesheet" href="app/account/signup/signup.css">
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
@@ -51,6 +51,7 @@
       <link rel="stylesheet" href="app/notes/notesList/notesList.css">
       <link rel="stylesheet" href="app/notes/notesView/notesView.css">
       <link rel="stylesheet" href="app/orders/orders.css">
+      <link rel="stylesheet" href="app/orders/ordersCreate/ordersCreate.css">
       <link rel="stylesheet" href="app/orders/ordersEdit/ordersEdit.css">
       <link rel="stylesheet" href="app/products/products.css">
       <link rel="stylesheet" href="components/footer/footer.css">
@@ -99,13 +100,17 @@
       <script src="bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
+
+    <!-- Set page title after angular-breadcrumb load -->
+    <title ncy-breadcrumb-last="LaMi-Jet / {{ncyBreadcrumbLabel}}"></title>
+
     <!-- build:js(.tmp) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
       <script src="app/admin/admin.module.js"></script>
       <script src="components/auth/auth.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="app/orders/orders.js"></script>
+      <script src="app/orders/ordersCreate/ordersCreate.controller.js"></script>
       <script src="app/admin/admin.controller.js"></script>
       <script src="app/account/account.js"></script>
       <script src="app/admin/admin.router.js"></script>
@@ -120,9 +125,10 @@
       <script src="app/notes/notesList/notesList.controller.js"></script>
       <script src="app/notes/notesService/notesService.service.js"></script>
       <script src="app/notes/notesView/notesView.controller.js"></script>
-      <script src="app/orders/orders.controller.js"></script>
+      <script src="app/orders/orders.js"></script>
       <script src="app/account/login/login.controller.js"></script>
       <script src="app/orders/ordersEdit/ordersEdit.controller.js"></script>
+      <script src="app/orders/ordersList/ordersList.controller.js"></script>
       <script src="app/orders/ordersService/ordersService.service.js"></script>
       <script src="app/products/products.controller.js"></script>
       <script src="app/products/products.js"></script>
