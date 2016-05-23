@@ -182,15 +182,6 @@
       this.notNew = false;
       this.edit = next;
     }
-
-    toggleDateServicedCal() {
-      this.dateServicedCal = !this.dateServicedCal;
-    }
-
-    toggleDateInStoreCal() {
-      this.dateInStoreCal = !this.dateInStoreCal;
-    }
-
   }
 
   angular.module('lamiJetApp')

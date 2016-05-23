@@ -95,7 +95,7 @@
       <label for="dateServiced"><span class="text-muted">Serviced Date</span></label>
     </div>
     <div class="primary">
-      <p class="input-group" ng-click="vm.toggleDateServicedCal()">
+      <p class="input-group" ng-click="vm.dateServicedCal = !vm.dateServicedCal">
         <input type="text" uib-datepicker-popup="{{vm.dateFormat}}" id="dateServiced" 
           name="dateServiced" class="handicapped form-control" ng-model="vm.order.dateServiced" 
           placeholder="Serviced Date" readonly required>
@@ -120,7 +120,7 @@
       <label for="dateInStore"><span class="text-muted">In-Store Date</span></label>
     </div>
     <div class="primary">
-      <p class="input-group" ng-click="vm.toggleDateInStoreCal()">
+      <p class="input-group" ng-click="this.dateInStoreCal = !this.dateInStoreCal">
         <input type="text" uib-datepicker-popup="{{vm.dateFormat}}" id="dateInStore" 
           name="dateInStore" class="handicapped form-control" ng-model="vm.order.dateInStore" 
           placeholder="In-Store Date" readonly required>
@@ -134,7 +134,7 @@
   <div class="inline-cal" ng-show="vm.dateInStoreCal">
     <div style="display:inline-block;">
       <uib-datepicker ng-model="vm.order.dateInStore" class="well well-sm" 
-        datepicker-options="vm.inlineOptions" ng-change="vm.toggleDateInStoreCal()">
+        datepicker-options="vm.inlineOptions" ng-change="this.dateInStoreCal = !this.dateInStoreCal">
       </uib-datepicker>
     </div>
   </div>
