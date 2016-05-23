@@ -130,10 +130,6 @@
       this.edit = next;
     }
 
-    productDescSelect($item) {
-      this.item.upc = $item.upc;
-    }
-
     saveItem(form) {
       if(form.$valid) {
         // Update item

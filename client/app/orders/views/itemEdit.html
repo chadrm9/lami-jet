@@ -36,7 +36,7 @@
     <div class="primary">
       <input type="text" id="description" name="description" class="form-control" 
         ng-change="vm.item.upc = ''" ng-model="vm.item.description" uib-typeahead="product.description as 
-        product.description for product in vm.products | filter: $viewValue | unique: 'upc' | limitTo:8" typeahead-editable="false" typeahead-on-select="vm.productDescSelect($item)" 
+        product.description for product in vm.products | filter: $viewValue | unique: 'upc' | limitTo:8" typeahead-editable="false" typeahead-on-select="vm.item.upc = $item.upc" 
         placeholder="Description" required>
     </div>
   </div>
