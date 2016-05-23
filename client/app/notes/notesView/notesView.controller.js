@@ -107,11 +107,6 @@
         return false;
       }
     }
-
-    // Flip filter direction by updatedAt
-    sortReverse() {
-      this.sortDirection = !this.sortDirection;
-    }
   }
 
   angular.module('lamiJetApp')

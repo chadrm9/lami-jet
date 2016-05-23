@@ -29,11 +29,6 @@
       });
     }
 
-    // Flip filter direction by updatedAt
-    sortReverse() {
-      this.sortDirection = !this.sortDirection;
-    }
-
     // Check user is owner or admin
     isOwnerOrAdmin(user) {
       if (this.getCurrentUser().name === user || this.isAdmin()) {
