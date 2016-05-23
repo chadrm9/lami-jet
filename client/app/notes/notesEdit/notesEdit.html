@@ -1,10 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h4 class="page-header">
-        <!-- State => notes -->
-        <a ui-sref="notes">Notes</a> > Edit Note
-      </h4>
+      <h4 class="page-header"><div ncy-breadcrumb></div></h4>
 
       <!-- Note details -->
       <div ng-show="vm.note.createdAt">
@@ -26,11 +23,31 @@
         <button type="submit" class="btn btn-success" form="editNote" value="Submit">
           <i class="glyphicon glyphicon-ok"></i> Save</button>
         
-        <!-- State => notesView, params.id: vm.note._id -->
+        <!-- State => notes.view, params.id: vm.note._id -->
         <button type="button" class="pull-right btn btn-danger" 
-          ui-sref="notesView({id:vm.note._id})"><i class="glyphicon glyphicon-new-window"></i> 
+          ui-sref="notes.view({id:vm.note._id})"><i class="glyphicon glyphicon-new-window"></i> 
           Cancel</button>
       </div>
+
+      <!-- Comments -->
+        <div class="form-flex form-group border-top">
+          <div class="secondary">
+            <i class="text-muted glyphicon glyphicon-comment"></i>
+            <strong class="text-muted" ng-bind="' Comments (' + vm.note.comments.length + ')'"></strong>
+          </div>
+
+          <!-- Sort, Clear buttons -->
+          <div class="primary">
+            <div class="pull-right">
+              <button type="button" class="btn btn-default" ng-click="vm.sortReverse()">
+                <i class="text-muted glyphicon glyphicon-sort"></i> Sort</button>
+
+              <button type="button" class="btn btn-default" ng-show="vm.filter" 
+                ng-click="vm.filter = ''">
+                <i class="text-muted glyphicon glyphicon-filter"></i> Clear</button>
+            </div>
+          </div>
+        </div>
 
       <!-- noteView template -->
       <div ui-view="commentsView"></div>

@@ -4,50 +4,71 @@ angular.module('lamiJetApp')
   .config(function($stateProvider) {
     $stateProvider
       .state('notes', {
+        abstract: true,
+        url: '',
+        'authenticate': 'true',
+        template: '<div ui-view></div>',
+      })
+      .state('notes.list', {
         url: '/notes',
         'authenticate': 'true',
-        template: '<notes></notes>'
+        template: '<notes-list></notes-list>',
+        ncyBreadcrumb: {
+          label: 'Notes'
+        }
       })
-			.state('notesView', {
+			.state('notes.view', {
 				url: '/notes/view/:id',
 				'authenticate': 'true',
 				views: {
-					'': {
-						template: '<notes-view></notes-view>',
-					},
-					'commentsEdit@notesView': {
+          '': {
+            template: '<notes-view></notes-view>'
+          },
+					'commentsEdit@notes.view': {
 						templateUrl: 'app/notes/views/commentsEdit.html'
 					},
-          'commentEdit@notesView': {
+          'commentEdit@notes.view': {
             templateUrl: 'app/notes/views/commentEdit.html'
           }
-				}
+				},
+        ncyBreadcrumb: {
+          label: 'View Note',
+          parent: 'notes.list'
+        }
 			})
-      .state('notesEdit', {
+      .state('notes.edit', {
         url: '/notes/edit/:id',
         'authenticate': 'true',
         views: {
           '': {
             template: '<notes-edit></notes-edit>',
           },
-          'noteEdit@notesEdit': {
+          'noteEdit@notes.edit': {
             templateUrl: 'app/notes/views/noteEdit.html'
           },
-          'commentsView@notesEdit': {
+          'commentsView@notes.edit': {
             templateUrl: 'app/notes/views/commentsView.html'
           }
+        },
+        ncyBreadcrumb: {
+          label: 'Edit Note',
+          parent: 'notes.list'
         }
       })
-      .state('notesCreate', {
+      .state('notes.create', {
         url: '/notes/create',
         'authenticate': 'true',
         views: {
           '': {
             template: '<notes-create></notes-create>',
           },
-          'noteEdit@notesCreate': {
+          'noteEdit@notes.create': {
             templateUrl: 'app/notes/views/noteEdit.html'
           }
+        },
+        ncyBreadcrumb: {
+          label: 'Create Note',
+          parent: 'notes.list'
         }
       });
   });

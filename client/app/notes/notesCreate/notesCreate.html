@@ -1,10 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h4 class="page-header">
-        <!-- State => notes -->
-        <a ui-sref="notes">Notes</a> > Create Note
-      </h4>
+      <h4 class="page-header"><div ncy-breadcrumb></div></h4>
 
       <div class="form-group">
         <!-- noteEdit template -->
@@ -14,8 +11,8 @@
         <button type="submit" class="btn btn-success" form="editNote" value="Submit">
           <i class="glyphicon glyphicon-ok"></i> Save</button>
         
-        <!-- State => notes -->
-        <button type="button" class="pull-right btn btn-danger" ui-sref="notes">
+        <!-- State => notes.list -->
+        <button type="button" class="pull-right btn btn-danger" ui-sref="notes.list">
           <i class="glyphicon glyphicon-new-window"></i> Cancel</button>
       </div>
 

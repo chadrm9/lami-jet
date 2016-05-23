@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h4 class="page-header">Notes</h4>
+      <h4 class="page-header"><div ncy-breadcrumb></div></h4>
 
       <!-- Create, Sort, Clear buttons -->
       <div class="form-group">
-        <!-- State => notesCreate -->
-        <a type="button" class="btn btn-primary" ui-sref="notesCreate">
+        <!-- State => notes.create -->
+        <a type="button" class="btn btn-primary" ui-sref="notes.create">
           <i class="glyphicon glyphicon-pencil"></i> Create</a>
 
         <div class="pull-right">
@@ -39,18 +39,19 @@
           <div class="form-group">
             <span><strong ng-bind="note.title"></strong></span><br>
             <span class="newlines" ng-bind="note.message"></span><br>
-            <span class="text-muted">
+            <strong class="text-muted">
               <i class="glyphicon glyphicon-comment"></i>
-              <span ng-bind="note.comments.length + ' comment'"></span><span ng-bind="'s'"
+              <span ng-bind="' Comment'"></span><span ng-bind="'s'"
                     ng-show="note.comments.length !== 1"></span>
-            </span>
+              <span ng-bind="' (' + note.comments.length + ')'"
+            </strong>
           </div>
 
           <!-- View, Edit, Delete buttons -->
           <div class="form-flex form-group" ng-hide="note.delete">
             <div class="secondary">
-              <!-- State => notesView, params.id: 'note._id' -->
-              <a type="button" class="btn btn-info" ui-sref="notesView({id:note._id})">
+              <!-- State => notes.view, params.id: 'note._id' -->
+              <a type="button" class="btn btn-info" ui-sref="notes.view({id:note._id})">
                 <i class="glyphicon glyphicon-unchecked"></i> View</a>
             </div>
             <div class="primary">
@@ -58,9 +59,9 @@
                 <!-- Owner, Admin can delete -->
                 <div ng-show="vm.isOwnerOrAdmin(note.user.name)">
                   <!-- Owner can edit -->
-                  <!-- State => notesEdit, params.id: 'note._id' -->
+                  <!-- State => notes.edit, params.id: 'note._id' -->
                   <a type="button" class="btn btn-warning" ng-show="vm.isOwner(note.user.name)"
-                    ui-sref="notesEdit({id:note._id})"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                    ui-sref="notes.edit({id:note._id})"><i class="glyphicon glyphicon-edit"></i> Edit</a>
 
                   <button class="btn btn-danger" ng-click="note.delete = !note.delete">
                     <i class="glyphicon glyphicon-trash"></i> Delete</button>

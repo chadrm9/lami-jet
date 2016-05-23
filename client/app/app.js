@@ -11,7 +11,8 @@ angular.module('lamiJetApp', [
   'ui.router',
   'ui.bootstrap',
   'validation.match',
-  'monospaced.elastic'
+  'monospaced.elastic',
+  'ncy-angular-breadcrumb'
 ])
 
   .config(function($urlRouterProvider, $locationProvider) {

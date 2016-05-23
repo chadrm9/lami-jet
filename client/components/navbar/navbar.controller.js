@@ -12,7 +12,7 @@ class NavbarController {
     'icon':  'shopping-cart'
   },{
     'title': 'Notes',
-    'state': 'notes',
+    'state': 'notes.list',
     'icon':  'inbox'
   }];
 

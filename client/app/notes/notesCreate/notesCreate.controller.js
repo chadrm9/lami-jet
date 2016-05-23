@@ -24,8 +24,8 @@
       if (form.$valid) {
         // Create note
         this.notesService.createNote(this.note).then(() => {
-          // State => notes
-          this.$state.go('notes');
+          // State => notes.list
+          this.$state.go('notes.list');
           this.alertService.add('success', 'Note created!', 5000);
           this.note = {};
           this.submitted = false;

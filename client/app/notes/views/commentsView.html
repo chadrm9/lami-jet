@@ -9,7 +9,8 @@
     <!-- Note details -->
     <div class="pull-right text-muted">
       <i class="glyphicon glyphicon-user"></i>
-      <span ng-bind="comment.user.name"></span>
+      <a href="#" ng-click="vm.filter.user.name ? vm.filter = '' : 
+              vm.filter.user.name = comment.user.name"><span ng-bind="comment.user.name"></span></a>
     </div>
 
     <div class="form-group">

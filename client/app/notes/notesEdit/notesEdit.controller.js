@@ -31,8 +31,8 @@
       if (form.$valid) {
         // Update note
         this.notesService.updateNote(this.note).then(() => {
-          // State => notesView, params.id: 'note._id'
-          this.$state.go('notesView', {id:this.note._id});
+          // State => notes.view, params.id: 'note._id'
+          this.$state.go('notes.view', {id:this.note._id});
           this.alertService.add('success', 'Note saved!', 5000);
           this.note = {};
           this.submitted = false;
@@ -47,6 +47,11 @@
           this.focus('message');
         }
       }
+    }
+
+    // Flip filter direction by updatedAt
+    sortReverse() {
+      this.sortDirection = !this.sortDirection;
     }
   }
 

@@ -1,10 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h4 class="page-header">
-        <!-- State => notes -->
-        <a ui-sref="notes">Notes</a> > View Note
-      </h4>
+      <h4 class="page-header"><div ncy-breadcrumb></div></h4>
 
         <!-- Note details -->
         <div ng-show="vm.note.createdAt">
@@ -27,24 +24,18 @@
         <div class="form-flex form-group" ng-hide="vm.add">
           <div class="secondary">
             <button type="button" class="btn btn-info" ng-click="vm.add = !vm.add" 
-              event-focus="click" event-focus-id="comment"><i class="glyphicon glyphicon-comment"></i> 
-              Add</button>
+              event-focus="click" event-focus-id="comment"><i class="glyphicon glyphicon-plus"></i> 
+              Comment</button>
           </div>
 
-          <!-- Edit, Sort, Clear buttons -->
+          <!-- Edit button -->
           <div class="primary">
             <div class="pull-right">
               <!-- Owner can edit -->
-              <!-- State => notesEdit, params.id: 'vm.note._id' -->
+              <!-- State => notes.edit, params.id: 'vm.note._id' -->
               <a type="button" class="btn btn-warning" ng-show="vm.isOwner(vm.note.user.name)"
-                ui-sref="notesEdit({id:vm.note._id})"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                ui-sref="notes.edit({id:vm.note._id})"><i class="glyphicon glyphicon-edit"></i> Edit</a>
 
-              <button type="button" class="btn btn-default" ng-click="vm.sortReverse()">
-                <i class="text-muted glyphicon glyphicon-sort"></i> Sort</button>
-
-              <button type="button" class="btn btn-default" ng-show="vm.filter" 
-                ng-click="vm.filter = ''">
-                <i class="text-muted glyphicon glyphicon-filter"></i> Clear</button>
             </div>
           </div>
         </div>
@@ -61,6 +52,26 @@
                 
               <button type="button" class="pull-right btn btn-danger" ng-click="vm.resetComment()">
                 <i class="glyphicon glyphicon-new-window"></i> Cancel</button>
+          </div>
+        </div>
+
+        <!-- Comments -->
+        <div class="form-flex form-group border-top">
+          <div class="secondary">
+            <i class="text-muted glyphicon glyphicon-comment"></i>
+            <strong class="text-muted" ng-bind="' Comments (' + vm.note.comments.length + ')'"></strong>
+          </div>
+
+          <!-- Sort, Clear buttons -->
+          <div class="primary">
+            <div class="pull-right">
+              <button type="button" class="btn btn-default" ng-click="vm.sortReverse()">
+                <i class="text-muted glyphicon glyphicon-sort"></i> Sort</button>
+
+              <button type="button" class="btn btn-default" ng-show="vm.filter" 
+                ng-click="vm.filter = ''">
+                <i class="text-muted glyphicon glyphicon-filter"></i> Clear</button>
+            </div>
           </div>
         </div>
 

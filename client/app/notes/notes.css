@@ -10,9 +10,16 @@
 	margin-bottom: 0px;
 	padding: 12px 0 0px 0;
 }
-.note-list li:first-child, .comment-list li:first-child {
+.comment-list li:first-child {
+  padding-top: 0;
+}
+.note-list li:first-child{
 	border-top: 1px solid #eee;
 }
 .note-list li:last-child, .comment-list li:last-child {
 	border-bottom: none;
+}
+.border-top {
+  border-top: 1px solid #eee;
+  padding-top: 12px;
 }

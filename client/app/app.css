@@ -91,6 +91,11 @@ input.form-control, textarea.form-control {
   margin-top: 0;
   margin-bottom: 12px;
 }
+.page-header ol {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
 .navbar-text {
   margin-left: 15px;
 }

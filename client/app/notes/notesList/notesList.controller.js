@@ -1,7 +1,7 @@
 'use strict';
 (function(){
 
-  class NotesComponent {
+  class NotesListComponent {
     constructor(Auth, notesService, alertService) {
       this.isAdmin = Auth.isAdmin;
       this.getCurrentUser = Auth.getCurrentUser;
@@ -56,9 +56,9 @@
   }
 
   angular.module('lamiJetApp')
-    .component('notes', {
-      templateUrl: 'app/notes/notes.html',
-      controller: NotesComponent,
+    .component('notesList', {
+      templateUrl: 'app/notes/notesList/notesList.html',
+      controller: NotesListComponent,
       controllerAs: 'vm',
     });
 })();
