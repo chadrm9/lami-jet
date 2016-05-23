@@ -2,10 +2,6 @@
   <div class="row">
     <div class="col-xs-12">
       <h4 class="page-header"><div ncy-breadcrumb></div></h4>
-      <h5>
-        <i class="text-muted glyphicon glyphicon-user"></i>
-        <span ng-bind="'Create User:'"></span>
-      </h5><br>
       <form class="form" name="form" ng-submit="vm.register(form)" novalidate>
 
         <!-- Username -->
@@ -76,8 +72,8 @@
             <label for="email"><span class="text-muted">Email</span></label>
           </div>
           <div class="primary">
-            <input type="email" name="email" class="form-control" ng-model="vm.user.email"
-                 placeholder="Email" required mongoose-error/>
+            <input type="email" id="email" name="email" class="form-control" ng-model="vm.user.email"
+              placeholder="Email" required mongoose-error/>
           </div>
         </div>
         <div class="form-flex form-group error" ng-class="{ 'has-error': form.email.$invalid 
@@ -139,8 +135,8 @@
             <label for="password"><span class="text-muted">Password</span></label>
           </div>
           <div class="primary">
-            <input type="password" name="password" class="form-control" ng-model="vm.user.password"
-                 ng-minlength="3" placeholder="Password" required mongoose-error/>
+            <input type="password" id="password" name="password" class="form-control" 
+              ng-model="vm.user.password" ng-minlength="3" placeholder="Password" required mongoose-error/>
           </div>
         </div>
         <div class="form-flex form-group error" ng-class="{ 'has-error': form.password.$invalid 
@@ -161,7 +157,7 @@
             <label for="confirmPassword"><span class="text-muted">Confirm Password</span></label>
           </div>
           <div class="primary">
-            <input type="password" name="confirmPassword" class="form-control" 
+            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" 
               ng-model="vm.user.confirmPassword" placeholder="Password" match="vm.user.password" 
               ng-minlength="3" required/>
           </div>

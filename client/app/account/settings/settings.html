@@ -15,8 +15,8 @@
             <label for="password"><span class="text-muted">Current Password</span></label>
           </div>
           <div class="primary">
-            <input type="password" name="password" class="form-control" ng-model="vm.user.password"
-                 ng-minlength="3" placeholder="Current Password" required mongoose-error/>
+            <input type="password" id="password" name="password" class="form-control" 
+              ng-model="vm.user.password" ng-minlength="3" placeholder="Current Password" required mongoose-error/>
           </div>
         </div>
         <div class="form-flex form-group error" ng-class="{ 'has-error': form.password.$invalid 
@@ -36,8 +36,8 @@
             <label for="newPassword"><span class="text-muted">New Password</span></label>
           </div>
           <div class="primary">
-            <input type="password" name="newPassword" class="form-control" ng-model="vm.user.newPassword"
-                   ng-minlength="3" placeholder="New Password" required mongoose-error/>
+            <input type="password" id="newPassword" name="newPassword" class="form-control" 
+              ng-model="vm.user.newPassword" ng-minlength="3" placeholder="New Password" required mongoose-error/>
           </div>
         </div>
         <div class="form-flex form-group error" ng-class="{ 'has-error': form.newPassword.$invalid 
@@ -59,7 +59,7 @@
             <label for="confirmPassword"><span class="text-muted">Confirm Password</span></label>
           </div>
           <div class="primary">
-            <input type="password" name="confirmPassword" class="form-control" 
+            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" 
               ng-model="vm.user.confirmPassword" placeholder="Confirm Password" match="vm.user.newPassword"
               ng-minlength="3" required/>
           </div>
