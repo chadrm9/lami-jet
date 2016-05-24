@@ -35,7 +35,7 @@
         startingDay: 1
       };
 
-      // Cache invoice/item template
+      // Cache invoice/item accordion template
       this.$templateRequest('app/orders/views/accordion-template.html').then(() => {
 
         // Ensure products loaded
@@ -56,6 +56,7 @@
               this.order.dateInStore = new Date(this.order.dateInStore);
             });
           }
+          
           // Start new order
           else {
             this.order.user = this.getCurrentUser();
@@ -71,6 +72,7 @@
 
     saveOrder(form) {
       if(form.$valid) {
+
         // Update existing order
         if(this.$state.params.id) {
           this.ordersService.updateOrder(this.order).then(() => {
@@ -79,6 +81,7 @@
             this.alertService.add('success', 'Order saved!', 5000);
           });
         }
+
         // Create new order
         else {
           this.ordersService.createOrder(this.order).then(() => {
@@ -103,11 +106,13 @@
 
     saveInvoice(form) {
       if(form.$valid) {
+
         // Update invoice
         if(this.notNew) {
           var index = this.order.invoices.indexOf(this.invoice);
           this.order.invoices[index] = this.invoice;
         }
+
         // Push new invoice
         else {
           this.order.invoices.push(this.invoice);
@@ -153,21 +158,20 @@
       this.edit = next;
     }
 
-    productDescSelect($item) {
-      this.item.upc = $item.upc;
-    }
-
     saveItem(form) {
       if(form.$valid) {
+
         // Update item
         if(this.notNew) {
           var index = this.order.items.indexOf(this.item);
           this.order.items[index] = this.item;
         }
+
         // Push new item
         else {
           this.order.items.push(this.item);
         }
+
         // Probably adding another item
         this.resetItem('item');
         this.focus('aisle');
