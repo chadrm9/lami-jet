@@ -150,6 +150,7 @@ function handleXlsx() {
     var invoice1 = [];
     var invoice2 = [];
     var invoice3 = [];
+
     // 1 invoice/section
     if(entity.invoices[0]) {
       invoice1.push(entity.invoices[0]);
@@ -168,6 +169,7 @@ function handleXlsx() {
     var items4 = [];
     var items5 = [];
     var items6 = [];
+
     // 27 items/section
     for(var i = 0; i < entity.items.length; i++) {
       if(i < 27) {
@@ -198,6 +200,7 @@ function handleXlsx() {
       sheetCount = 2;
     }
 
+    // Read template xlsx
     fs.readFile(path.join(__dirname, templateSize), function(err, data) {
 
       // Prepare template
@@ -242,6 +245,7 @@ function handleXlsx() {
         pgsStr = '_' + sheetCount + '-pgs';
       }
 
+      // Prepare email object
       var payload = {
         to      : entity.user.districtMgr.email,
         cc      : entity.user.email,
@@ -264,16 +268,15 @@ function handleXlsx() {
           console.error(err);
         }
       });
-      
       if (err) {
         console.error(err);
       }
-
     });
     return entity;
    }
 }
 
+// Quick date formatting
 Date.prototype.mmddyy = function() {
   var yy = this.getFullYear().toString().substr(2,2);
   var mm = (this.getMonth()+1).toString();
