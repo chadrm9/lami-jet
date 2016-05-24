@@ -50,7 +50,7 @@ angular.module('lamiJetApp')
         'authenticate': 'true',
         views: {
           '': {
-            template: '<orders-create></orders-create>'
+            template: '<orders-edit></orders-edit>'
           },
           'orderDetails@orders.create': {
             templateUrl: 'app/orders/views/orderDetails.html'

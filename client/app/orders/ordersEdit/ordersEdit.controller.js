@@ -25,10 +25,10 @@
     $onInit() {
       // Setup inline datepickers
       this.dateFormat = 'MM-dd-yy';
-      // this.maxDt = new Date();
-      // this.minDt = new Date();
       this.order.dateServiced = new Date();
       this.order.dateInStore = new Date();
+      // this.maxDt = new Date();
+      // this.minDt = new Date();
       this.inlineOptions = {
         // maxDate: this.maxDt.setDate((new Date()).getDate() + 14),
         // minDate: this.minDt.setDate((new Date()).getDate() - 14),
@@ -46,14 +46,25 @@
           this.edit = 'details';  
 
           // Fetch existing order
-          this.ordersService.fetchOrder(this.$state.params.id).then(response => {
-            this.order = response;
+          if(this.$state.params.id) {
+            this.ordersService.fetchOrder(this.$state.params.id).then(response => {
+              this.order = response;
+              this.fullName = this.order.user.firstName + ' ' + this.order.user.lastName;
+              this.districtMgr = this.order.user.districtMgr.firstName + ' ' + 
+                                 this.order.user.districtMgr.lastName;
+              this.order.dateServiced = new Date(this.order.dateServiced);
+              this.order.dateInStore = new Date(this.order.dateInStore);
+            });
+          }
+          // Start new order
+          else {
+            this.order.user = this.getCurrentUser();
             this.fullName = this.order.user.firstName + ' ' + this.order.user.lastName;
             this.districtMgr = this.order.user.districtMgr.firstName + ' ' + 
                                this.order.user.districtMgr.lastName;
-            this.order.dateServiced = new Date(this.order.dateServiced);
-            this.order.dateInStore = new Date(this.order.dateInStore);
-          });
+            this.focus('chainStore');
+          }
+
         });
       });
     }
@@ -61,13 +72,23 @@
     saveOrder(form) {
       if(form.$valid) {
         // Update existing order
-        this.ordersService.updateOrder(this.order).then(() => {
-          this.order = {};
-          this.submitted = false;
-          // State => orders.list
-          this.$state.go('orders.list');
-          this.alertService.add('success', 'Order saved!', 5000);
-        });
+        if(this.$state.params.id) {
+          this.ordersService.updateOrder(this.order).then(() => {
+            // State => orders.list
+            this.$state.go('orders.list');
+            this.alertService.add('success', 'Order saved!', 5000);
+          });
+        }
+        // Create new order
+        else {
+          this.ordersService.createOrder(this.order).then(() => {
+            // State => orders.list
+            this.$state.go('orders.list');
+            this.alertService.add('success', 'Order created!', 5000);
+          });
+        }
+        this.order = {};
+        this.submitted = false;
       }
       else {
         this.submitted = true;
@@ -130,6 +151,10 @@
       this.invoice = {};
       this.notNew = false;
       this.edit = next;
+    }
+
+    productDescSelect($item) {
+      this.item.upc = $item.upc;
     }
 
     saveItem(form) {
