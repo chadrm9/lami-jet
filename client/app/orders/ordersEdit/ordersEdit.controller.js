@@ -56,7 +56,7 @@
               this.order.dateInStore = new Date(this.order.dateInStore);
             });
           }
-          
+
           // Start new order
           else {
             this.order.user = this.getCurrentUser();
@@ -172,8 +172,15 @@
           this.order.items.push(this.item);
         }
 
-        // Probably adding another item
-        this.resetItem('item');
+        // Reset item, start another item if applicable
+        if(this.getCurrentUser().settings.autoNextItem) {
+          this.resetItem('item');
+        }
+        else {
+          this.resetItem();
+        }
+        
+        
         this.focus('aisle');
         this.submitted = false;
         this.alertService.add('success', 'Item saved!', 5000);
