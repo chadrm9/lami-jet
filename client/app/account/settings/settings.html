@@ -14,7 +14,21 @@
             </div>
           </div>
           <div class="primary">
-            <label for="autoNextItem"><span class="text-muted" ng-bind="'When adding items to an order, automatically open next \'Add Item\' after current item is saved.'"></span></label>
+            <label for="autoNextItem"><span class="text-muted" ng-bind="'When adding items to an order, automatically open next \'Add Item\' after current item is saved'"></span></label>
+          </div>
+        </div>
+
+        <div class="form-flex form-group">
+          <div class="secondary settings">
+            <div class="btn-group">
+              <label class="btn btn-warning" ng-model="vm.user.settings.hideSent" 
+                uib-btn-radio="true" ng-bind="'Yes'" ng-change="vm.saveSettings()"></label>
+              <label class="btn btn-warning" ng-model="vm.user.settings.hideSent" 
+                uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
+            </div>
+          </div>
+          <div class="primary">
+            <label for="hideSent"><span class="text-muted" ng-bind="'Hide sent orders'"></span></label>
           </div>
         </div>
       </form>

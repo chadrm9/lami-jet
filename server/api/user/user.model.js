@@ -28,7 +28,8 @@ var UserSchema = new Schema({
   provider: String,
   salt: String,
   settings: {
-    autoNextItem: {type: Boolean, default: true}
+    autoNextItem: {type: Boolean, default: true},
+    hideSent: {type: Boolean, default: false}
   }
 });
 

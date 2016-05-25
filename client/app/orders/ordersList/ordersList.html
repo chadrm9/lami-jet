@@ -21,7 +21,8 @@
         <!-- Orders List -->
         <ul class="list-group order-list">
           <!-- User see thier own orders, Admin see all orders -->
-          <li class="list-group-item" ng-show="vm.isOwnerOrAdmin(order.user.name)" ng-repeat="order in vm.orders | orderBy:'dateServiced' : vm.sortDirection | filter: vm.filter">
+          <li class="list-group-item" ng-show="vm.isOwnerOrAdmin(order.user.name)" 
+            ng-repeat="order in vm.orders | orderBy:'dateServiced' : vm.sortDirection | filter: vm.filter" ng-hide="vm.getCurrentUser().settings.hideSent && order.sent">
             <div class="form-group">
               <div class="pull-right" ng-show="vm.isAdmin()">
                 <i class="text-muted glyphicon glyphicon-user"></i>
