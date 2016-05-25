@@ -56,17 +56,27 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
      * @param  {Function} callback - optional, function(error, user)
      * @return {Promise}
      */
-    createUser(user/*, callback*/) {
-      return User.save(user/*,
-        function(data) {
-          $cookies.put('token', data.token);
-          currentUser = User.get();
-          return safeCb(callback)(null, user);
-        },
-        function(err) {
-          Auth.logout();
-          return safeCb(callback)(err);
-        }*/).$promise;
+    createUser(user, callback) {
+      return User.save(user, function() {
+        return safeCb(callback)(null);
+      }, function(err) {
+        return safeCb(callback)(err);
+      }).$promise;
+    },
+
+    /**
+     * Update user
+     *
+     * @param  {Object}   user     - user info
+     * @param  {Function} callback - optional, function(error, user)
+     * @return {Promise}
+     */
+    updateUser(user, callback) {
+      return User.update(user, function() {
+        return safeCb(callback)(null);
+      }, function(err) {
+        return safeCb(callback)(err);
+      }).$promise;
     },
 
     /**

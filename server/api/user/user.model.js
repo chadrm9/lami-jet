@@ -27,7 +27,9 @@ var UserSchema = new Schema({
   password: String,
   provider: String,
   salt: String,
-  
+  settings: {
+    autoNextItem: {type: Boolean, default: true}
+  }
 });
 
 UserSchema.pre('find', function(next){
@@ -81,7 +83,7 @@ UserSchema
     return password.length;
   }, 'Password cannot be blank');
 
-// Validate email is not taken
+// Validate name is not taken
 UserSchema
   .path('name')
   .validate(function(value, respond) {

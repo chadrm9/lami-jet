@@ -33,7 +33,8 @@ User.find({}).remove()
       repPhoneNo: '0000000000',
       districtMgr: {_id: '572250bbeca3740300e516d0'},
       email: 'admin@admin.com',
-      password: 'admin'
+      password: 'admin',
+      settings: {autoNextItem: false}
     }, {
       _id: '000000000000000000000002',
       provider: 'local',

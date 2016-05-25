@@ -1,3 +1,7 @@
 .form-flex .secondary.settings {
   min-width: 128px;
 }
+.form.password {
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+}

@@ -2,11 +2,28 @@
   <div class="row">
     <div class="col-xs-12">
       <h4 class="page-header"><div ncy-breadcrumb></div></h4>
-      <h5>
-        <i class="text-muted glyphicon glyphicon-lock"></i>
-        <span ng-bind="'Change Password:'"></span>
-      </h5><br>
-      <form class="form" name="form" ng-submit="vm.changePassword(form)" novalidate>
+      <form class="form" name="settings" ng-submit="vm.saveSettings(form)" novalidate>
+
+        <div class="form-flex form-group">
+          <div class="secondary settings">
+            <div class="btn-group">
+              <label class="btn btn-warning" ng-model="vm.user.settings.autoNextItem" 
+                uib-btn-radio="true" ng-bind="'Yes'" ng-change="vm.saveSettings()"></label>
+              <label class="btn btn-warning" ng-model="vm.user.settings.autoNextItem" 
+                uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
+            </div>
+          </div>
+          <div class="primary">
+            <label for="autoNextItem"><span class="text-muted" ng-bind="'When adding items to an order, automatically open next \'Add Item\' after current item is saved.'"></span></label>
+          </div>
+        </div>
+      </form>
+
+      <form class="form password" name="form" ng-submit="vm.changePassword(form)" novalidate>
+        <h5>
+          <i class="text-muted glyphicon glyphicon-lock"></i>
+          <span ng-bind="'Change Password:'"></span>
+        </h5><br>
 
         <!-- Password -->
         <div class="form-flex form-group" ng-class="{ 'has-error': form.password.$invalid 
@@ -75,7 +92,8 @@
 
         <p class="help-block" ng-bind="vm.message"></p>
 
-        <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-ok"></i> Save</button>
+        <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-ok"></i> Change</button>
+
       </form>
     </div>
   </div>

@@ -6,10 +6,11 @@ class SettingsController {
     this.submitted = false;
 
     this.Auth = Auth;
+    this.user = Auth.getCurrentUser();
+
     this.$state = $state;
 
     this.focus = focus;
-    this.focus('password');
 
     this.alertService = alertService;
   }
@@ -20,7 +21,6 @@ class SettingsController {
     if (form.$valid) {
       this.Auth.changePassword(this.user.oldPassword, this.user.newPassword)
         .then(() => {
-          this.$state.go('products');
           this.alertService.add('success', 'Password changed!', 5000);
           //this.message = 'Password successfully changed';
         })
@@ -30,6 +30,16 @@ class SettingsController {
           //this.message = '';
         });
     }
+  }
+
+  saveSettings() {
+    this.Auth.updateUser(this.user)
+      .then(() => {
+        this.alertService.add('success', 'Settings updated!', 5000);
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 }
 

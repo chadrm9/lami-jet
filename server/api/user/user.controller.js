@@ -1,9 +1,32 @@
 'use strict';
 
+import _ from 'lodash';
 import User from './user.model';
 import passport from 'passport';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
+
+function respondWithResult(res, statusCode) {
+  statusCode = statusCode || 200;
+  return function(entity) {
+    if (entity) {
+      res.status(statusCode).json(entity);
+    }
+    //Bluebird 3 throws warning for unreturned promise
+    return null;
+  };
+}
+
+function saveUpdates(updates) {
+  return function(entity) {
+    // Replaced lodash merge with extend for updating child docs
+    var updated = _.extend(entity, updates);
+    return updated.save()
+      .then(updated => {
+        return updated;
+      });
+  };
+}
 
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
@@ -17,6 +40,28 @@ function handleError(res, statusCode) {
   return function(err) {
     res.status(statusCode).send(err);
   };
+}
+
+function handleEntityNotFound(res) {
+  return function(entity) {
+    if (!entity) {
+      res.status(404).end();
+      return null;
+    }
+    return entity;
+  };
+}
+
+// Check authorized user._id
+function handleUnauthorized(req, res) {
+  return function(entity) {
+    if (!entity) {return null;}
+    if (entity._id.toString() !== req.user._id.toString() && req.user.role !== 'admin'){
+      res.sendStatus(403).end();
+      return null;
+    }
+    return entity;
+  }
 }
 
 /**
@@ -80,6 +125,18 @@ export function destroy(req, res) {
     .then(function() {
       return res.status(204).end();
     })
+    .catch(handleError(res));
+}
+
+/**
+ * Update user
+ */
+export function update(req, res, next) {
+  return User.findById(req.body._id).exec()
+    .then(handleEntityNotFound(res))
+    .then(handleUnauthorized(req, res))
+    .then(saveUpdates(req.body))
+    .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
