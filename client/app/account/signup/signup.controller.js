@@ -17,23 +17,15 @@ class SignupController {
   }
 
   // Register new user
-  register(form) {
+  saveUser(form) {
     this.submitted = true;
 
     if (form.$valid) {
-      this.Auth.createUser({
-        name: this.user.name,
-        firstName: this.user.firstName,
-        lastName: this.user.lastName,
-        email: this.user.email,
-        salesmanNo: this.user.salesmanNo,
-        repPhoneNo: this.user.repPhoneNo,
-        password: this.user.password
-      })
+      this.Auth.createUser(this.user)
       .then(() => {
-        // Account created, redirect to admin
+        // User created, redirect to admin
         this.$state.go('admin');
-        this.alertService.add('success', 'User created!', 3000);
+        this.alertService.add('success', 'User created!', 5000);
       })
       .catch(err => {
         err = err.data;

@@ -7,9 +7,9 @@
         <div class="form-flex form-group">
           <div class="secondary settings">
             <div class="btn-group">
-              <label class="btn btn-warning" ng-model="vm.user.settings.autoNextItem" 
+              <label class="btn btn-info" ng-model="vm.user.settings.autoNextItem" 
                 uib-btn-radio="true" ng-bind="'Yes'" ng-change="vm.saveSettings()"></label>
-              <label class="btn btn-warning" ng-model="vm.user.settings.autoNextItem" 
+              <label class="btn btn-info" ng-model="vm.user.settings.autoNextItem" 
                 uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
             </div>
           </div>
@@ -21,9 +21,9 @@
         <div class="form-flex form-group">
           <div class="secondary settings">
             <div class="btn-group">
-              <label class="btn btn-warning" ng-model="vm.user.settings.hideSent" 
+              <label class="btn btn-info" ng-model="vm.user.settings.hideSent" 
                 uib-btn-radio="true" ng-bind="'Yes'" ng-change="vm.saveSettings()"></label>
-              <label class="btn btn-warning" ng-model="vm.user.settings.hideSent" 
+              <label class="btn btn-info" ng-model="vm.user.settings.hideSent" 
                 uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
             </div>
           </div>
@@ -47,7 +47,7 @@
           </div>
           <div class="primary">
             <input type="password" id="password" name="password" class="form-control" 
-              ng-model="vm.user.password" ng-minlength="3" placeholder="Current Password" required mongoose-error/>
+              ng-model="vm.user.oldPassword" ng-minlength="3" placeholder="Current Password" required mongoose-error/>
           </div>
         </div>
         <div class="form-flex form-group error" ng-class="{ 'has-error': form.password.$invalid 
