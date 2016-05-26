@@ -16,3 +16,7 @@
 .form-flex .secondary.users {
   min-width: 95px;
 }
+.form.password {
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+}
