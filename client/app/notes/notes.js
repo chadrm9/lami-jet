@@ -7,7 +7,7 @@ angular.module('lamiJetApp')
         abstract: true,
         url: '',
         'authenticate': 'true',
-        template: '<div ui-view></div>',
+        template: '<div ui-view></div>'
       })
       .state('notes.list', {
         url: '/notes',
@@ -41,7 +41,7 @@ angular.module('lamiJetApp')
         'authenticate': 'true',
         views: {
           '': {
-            template: '<notes-edit></notes-edit>',
+            template: '<notes-edit></notes-edit>'
           },
           'noteEdit@notes.edit': {
             templateUrl: 'app/notes/views/noteEdit.html'
@@ -60,7 +60,7 @@ angular.module('lamiJetApp')
         'authenticate': 'true',
         views: {
           '': {
-            template: '<notes-create></notes-create>',
+            template: '<notes-create></notes-create>'
           },
           'noteEdit@notes.create': {
             templateUrl: 'app/notes/views/noteEdit.html'
