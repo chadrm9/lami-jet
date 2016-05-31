@@ -22,94 +22,98 @@
         <ul class="list-group order-list">
           <!-- User see thier own orders, Admin see all orders -->
           <li class="list-group-item" ng-show="vm.isOwnerOrAdmin(order.user.name)" 
-            ng-repeat="order in vm.orders | orderBy:'dateServiced' : vm.sortDirection | filter: vm.filter" ng-hide="vm.getCurrentUser().settings.hideSent && order.sent">
-            <div class="form-group">
-              <div class="pull-right" ng-show="vm.isAdmin()">
-                <i class="text-muted glyphicon glyphicon-user"></i>
-                <a href="#" ng-click="vm.filter.user.name ? vm.filter = '' : 
-                                      vm.filter.user.name = order.user.name" ng-bind="order.user.name"></a>
+            ng-repeat="order in vm.orders | orderBy:'dateServiced' : vm.sortDirection | filter: vm.filter">
+            <!-- Check hideSent user setting -->
+            <div ng-hide="vm.getCurrentUser().settings.hideSent && order.sent">
+              <div class="form-group">
+                <div class="pull-right" ng-show="vm.isAdmin()">
+                  <i class="text-muted glyphicon glyphicon-user"></i>
+                  <a href="#" ng-click="vm.filter.user.name ? vm.filter = '' : 
+                                        vm.filter.user.name = order.user.name" ng-bind="order.user.name"></a>
+                </div>
+
+                <!-- Chain & Store # -->
+                <a href="#" ng-click="vm.filter.chainStore ? vm.filter = '' : 
+                                      vm.filter.chainStore = order.chainStore">
+                  <strong ng-bind="order.chainStore"></strong></a>
+
+                <!-- Town -->
+                <span ng-bind="'({{order.town}})'"></span><br>
+
+                <!-- Date Serviced -->
+                <i class="text-muted glyphicon glyphicon-calendar"></i>
+                <span ng-bind="order.dateServiced | date: 'MM/dd/yy'"></span>
+                <span class="text-muted" ng-bind="'Serviced'"></span><br>
+
+                <!-- Date In-Store -->
+                <i class="text-muted glyphicon glyphicon-calendar"></i>
+                <span ng-bind="order.dateInStore | date: 'MM/dd/yy'"></span>
+                <span class="text-muted" ng-bind="'In-Store'"></span><br>
+
+                <!-- Invoices -->
+                <i class="text-muted glyphicon glyphicon-file"></i>
+                <span ng-bind="order.invoices.length"></span>
+                <span class="text-muted">
+                  <span ng-bind="' invoice'"></span><span ng-bind="'s'"
+                        ng-show="order.invoices.length !== 1"></span>
+                  </span>
+                </span>
+
+                <!-- Items -->
+                <i class="text-muted glyphicon glyphicon-barcode"></i>
+                <span ng-bind="order.items.length"></span>
+                <span class="text-muted">
+                  <span ng-bind="' item'"></span><span ng-bind="'s'"
+                        ng-show="order.items.length !== 1"></span>
+                  </span>
+                </span>
+
+                <!-- Sent -->
+                <div ng-show="order.sent">
+                  <i class="text-muted glyphicon glyphicon-envelope"></i>
+                  <a href="#" ng-click="vm.filter.sent ? vm.sent = '' : 
+                    vm.filter.sent = '!!'" ng-bind="'Sent'"></a>
+                  <span ng-bind="order.sent | date: 'MM/dd/yy hh:mm a'"></span>
+                </div>
               </div>
 
-              <!-- Chain & Store # -->
-              <a href="#" ng-click="vm.filter.chainStore ? vm.filter = '' : 
-                                    vm.filter.chainStore = order.chainStore">
-                <strong ng-bind="order.chainStore"></strong></a>
+              <!-- Send, Edit, Delete buttons -->
+              <div class="form-group" ng-hide="order.delete || order.send">
+                <button type="button" class="btn btn-info" 
+                    ng-click="order.send = !order.send">
+                  <i class="glyphicon glyphicon-send"></i>
+                  <span ng-hide="order.sent"> Send</span>
+                  <span ng-show="order.sent"> Resend</span>
+                </button>
+                <div class="pull-right">
+                  <a type="button" class="btn btn-warning" 
+                    ui-sref="orders.edit({id:order._id})">
+                    <i class="glyphicon glyphicon-edit"></i> Edit</a>
 
-              <!-- Town -->
-              <span ng-bind="'({{order.town}})'"></span><br>
-
-              <!-- Date Serviced -->
-              <i class="text-muted glyphicon glyphicon-calendar"></i>
-              <span ng-bind="order.dateServiced | date: 'MM/dd/yy'"></span>
-              <span class="text-muted" ng-bind="'Serviced'"></span><br>
-
-              <!-- Date In-Store -->
-              <i class="text-muted glyphicon glyphicon-calendar"></i>
-              <span ng-bind="order.dateInStore | date: 'MM/dd/yy'"></span>
-              <span class="text-muted" ng-bind="'In-Store'"></span><br>
-
-              <!-- Invoices -->
-              <i class="text-muted glyphicon glyphicon-file"></i>
-              <span ng-bind="order.invoices.length"></span>
-              <span class="text-muted">
-                <span ng-bind="' invoice'"></span><span ng-bind="'s'"
-                      ng-show="order.invoices.length !== 1"></span>
-                </span>
-              </span>
-
-              <!-- Items -->
-              <i class="text-muted glyphicon glyphicon-barcode"></i>
-              <span ng-bind="order.items.length"></span>
-              <span class="text-muted">
-                <span ng-bind="' item'"></span><span ng-bind="'s'"
-                      ng-show="order.items.length !== 1"></span>
-                </span>
-              </span>
-
-              <!-- Sent -->
-              <div ng-show="order.sent">
-                <i class="text-muted glyphicon glyphicon-envelope"></i>
-                <a href="#" ng-click="vm.filter.sent ? vm.sent = '' : 
-                  vm.filter.sent = '!!'" ng-bind="'Sent'"></a>
-                <span ng-bind="order.sent | date: 'MM/dd/yy hh:mm a'"></span>
+                  <button type="button" class="btn btn-danger" 
+                      ng-click="order.delete = !order.delete">
+                    <i class="glyphicon glyphicon-trash"></i> Delete</button>
+                </div>
               </div>
-            </div>
 
-            <!-- Send, Edit, Delete buttons -->
-            <div class="form-group" ng-hide="order.delete || order.send">
-              <button type="button" class="btn btn-info" 
+              <!-- Show Send -> Confirm/Cancel buttons -->
+              <div class="form-group" ng-show="order.send">
+                <button type="button" class="btn btn-success" 
+                  ng-click="vm.sendOrder(order._id); order.send = !order.send">
+                  <i class="glyphicon glyphicon-ok"></i> Confirm</button>
+                <button type="button" class="pull-right btn btn-danger" 
                   ng-click="order.send = !order.send">
-                <i class="glyphicon glyphicon-send"></i>
-                <span ng-hide="order.sent"> Send</span>
-                <span ng-show="order.sent"> Resend</span>
-              </button>
-              <div class="pull-right">
-                <a type="button" class="btn btn-warning" ui-sref="orders.edit({id:order._id})">
-                  <i class="glyphicon glyphicon-edit"></i> Edit</a>
-
-                <button type="button" class="btn btn-danger" 
-                    ng-click="order.delete = !order.delete">
-                  <i class="glyphicon glyphicon-trash"></i> Delete</button>
+                  <i class="glyphicon glyphicon-remove"></i> Cancel</button>
               </div>
-            </div>
 
-            <!-- Show Send -> Confirm/Cancel buttons -->
-            <div class="form-group" ng-show="order.send">
-              <button type="button" class="btn btn-success" 
-                ng-click="vm.sendOrder(order._id); order.send = !order.send">
-                <i class="glyphicon glyphicon-ok"></i> Confirm</button>
-              <button type="button" class="pull-right btn btn-danger" 
-                ng-click="order.send = !order.send">
-                <i class="glyphicon glyphicon-remove"></i> Cancel</button>
-            </div>
-
-            <!-- Show Delete -> Confirm/Cancel buttons -->
-            <div class="form-group" ng-show="order.delete">
-              <button type="button" class="btn btn-success" ng-click="vm.deleteOrder(order._id)">
-                <i class="glyphicon glyphicon-ok"></i> Confirm</button>
-              <button type="button" class="pull-right btn btn-danger" 
-                ng-click="order.delete = !order.delete">
-                <i class="glyphicon glyphicon-remove"></i> Cancel</button>
+              <!-- Show Delete -> Confirm/Cancel buttons -->
+              <div class="form-group" ng-show="order.delete">
+                <button type="button" class="btn btn-success" ng-click="vm.deleteOrder(order._id)">
+                  <i class="glyphicon glyphicon-ok"></i> Confirm</button>
+                <button type="button" class="pull-right btn btn-danger" 
+                  ng-click="order.delete = !order.delete">
+                  <i class="glyphicon glyphicon-remove"></i> Cancel</button>
+              </div>
             </div>
           </li>
         </ul>
