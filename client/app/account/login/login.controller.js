@@ -1,7 +1,7 @@
 'use strict';
 
 class LoginController {
-  constructor(Auth, $state, focus, $cookieStore, $location) {
+  constructor(Auth, $state, productsService, $templateRequest, focus, $cookieStore, $location) {
     this.user = {};
     this.errors = {};
     this.submitted = {};
@@ -9,6 +9,9 @@ class LoginController {
 
     this.Auth = Auth;
     this.$state = $state;
+
+    this.productsService = productsService;
+    this.$templateRequest = $templateRequest;
 
     this.focus = focus;
     this.focus('email');
@@ -30,6 +33,16 @@ class LoginController {
       this.Auth.login({
         email: this.user.email,
         password: this.user.password
+      })
+      .then(() => {
+        // Check autoLoadProducts user setting
+        if (this.Auth.getCurrentUser().settings.autoLoadProducts) {
+          this.productsService.fetchProducts().then(response => {
+            // Cache invoice/item accordion template
+            this.$templateRequest('app/templates/accordion-template.html').then(() => {
+            });
+          });
+        }
       })
       .then(() => {
         // Check for returnUrl cookie

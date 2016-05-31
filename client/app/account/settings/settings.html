@@ -7,6 +7,20 @@
         <div class="form-flex form-group">
           <div class="secondary settings">
             <div class="btn-group">
+              <label class="btn btn-info" ng-model="vm.user.settings.autoLoadProducts" 
+                uib-btn-radio="true" ng-bind="'Yes'" ng-change="vm.saveSettings()"></label>
+              <label class="btn btn-info" ng-model="vm.user.settings.autoLoadProducts" 
+                uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
+            </div>
+          </div>
+          <div class="primary">
+            <label for="autoLoadProducts"><span class="text-muted" ng-bind="'Automatically load Catalog data on login'"></span></label>
+          </div>
+        </div>
+
+        <div class="form-flex form-group">
+          <div class="secondary settings">
+            <div class="btn-group">
               <label class="btn btn-info" ng-model="vm.user.settings.autoNextItem" 
                 uib-btn-radio="true" ng-bind="'Yes'" ng-change="vm.saveSettings()"></label>
               <label class="btn btn-info" ng-model="vm.user.settings.autoNextItem" 

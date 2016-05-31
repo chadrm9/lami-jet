@@ -1,7 +1,7 @@
 <uib-accordion close-others="true">
   <uib-accordion-group ng-repeat="item in vm.order.items" 
       heading="[{{item.aisle}}] {{item.description}} ({{item.quantity}})" 
-      template-url="app/orders/views/accordion-template.html">
+      template-url="app/templates/accordion-template.html">
     <div class="form-flex form-group">
       <div class="secondary items">
         <label><span class="text-muted">Aisle</span></label>

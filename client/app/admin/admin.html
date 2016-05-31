@@ -15,7 +15,7 @@
         <uib-accordion close-others="true">
           <uib-accordion-group ng-repeat="user in vm.users | orderBy: 'name'" 
               heading="{{user.name}}" 
-              template-url="app/admin/views/user-accordion-template.html">
+              template-url="app/templates/accordion-template.html">
             <div class="form-flex form-group">
               <div class="secondary users">
                 <label><span class="text-muted">Name</span></label>

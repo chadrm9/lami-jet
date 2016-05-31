@@ -36,7 +36,7 @@
       };
 
       // Cache invoice/item accordion template
-      this.$templateRequest('app/orders/views/accordion-template.html').then(() => {
+      this.$templateRequest('app/templates/accordion-template.html').then(() => {
 
         // Ensure products loaded
         this.productsService.fetchProducts().then(response => {
@@ -172,7 +172,7 @@
           this.order.items.push(this.item);
         }
 
-        // Reset item, start another item if applicable
+        // Check autoNextItem user setting
         if(this.getCurrentUser().settings.autoNextItem) {
           this.resetItem('item');
         }

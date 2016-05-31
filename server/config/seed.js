@@ -207,7 +207,7 @@ Note.find({}).remove()
       ],
       sent: '01/02/16'
     }, {
-      user:    {_id: '000000000000000000000000'},
+      user: {_id: '000000000000000000000000'},
       chainStore: 'ZKRLO 666',
       town: 'Louisville',
       dateServiced: '02/01/16',
@@ -383,7 +383,7 @@ Note.find({}).remove()
 
       ]
     }, {
-      user:    {_id: '000000000000000000000002'},
+      user: {_id: '000000000000000000000002'},
       chainStore: 'ZKRLO 666',
       town: 'Louisville',
       dateServiced: '03/01/16',
