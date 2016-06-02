@@ -1,0 +1,11 @@
+.boxed {
+  border: 1px solid #ccc;
+  padding: 0px 4px;
+}
+.help p {
+  line-height: 2;
+}
+p.divider {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+}

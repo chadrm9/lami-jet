@@ -34,6 +34,9 @@
         <li ng-show="nav.isLoggedIn()" ng-click="nav.isCollapsed=true" ui-sref-active="active">
           <a ui-sref="settings"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
 
+        <li ng-show="nav.isLoggedIn()" ng-click="nav.isCollapsed=true" ui-sref-active="active">
+          <a ui-sref="help"><i class="glyphicon glyphicon-question-sign"></i> Help</a></li>
+
         <li ng-show="nav.isLoggedIn()" ng-click="nav.isCollapsed=true"><a ui-sref="logout">
           <i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
       </ul>

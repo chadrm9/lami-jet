@@ -1,0 +1,226 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="page-header"><div ncy-breadcrumb></div></h4>
+      <uib-accordion close-others="true">
+        <uib-accordion-group heading="Catalog" 
+          template-url="app/templates/accordion-template.html">
+          <div class="form-flex form-group">
+            <span class="help">
+              <p>
+                The catalog search is used to compare commodities and rankings of items. Items can be searched by description keywords, commodity keywords, UPC and bin numbers.
+              </p>
+              <p>
+                Enter your terms into the 
+                <span class="boxed text-muted">Search</span> box and use the 
+                <button class="btn btn-primary btn-xs">
+                  <i class="glyphicon glyphicon-search"></i> Search</button> and 
+                <button class="btn btn-default btn-xs">
+                  <i class="text-muted glyphicon glyphicon-repeat"></i> Clear</button> buttons.
+              </p>
+              <p>
+                Results will contain linked <a>descriptions</a> and <a>commodities</a>. Selecting them will refine your search to those exact terms, as shown in the 
+                <span class="boxed text-muted">Search</span> box.
+              </p>
+            </span>
+          </div>
+        </uib-accordion-group>
+        <uib-accordion-group heading="Orders" 
+          template-url="app/templates/accordion-template.html">
+          <div class="form-flex form-group">
+            <span class="help">
+              <p><u>Create/Edit Order:</u></p>
+              <p>
+                Here you can build orders to later be sent to your District Manager. An order is created by first selecting the 
+                <button class="btn btn-primary btn-xs">
+                  <i class="glyphicon glyphicon-pencil"></i> Create</button> button. An 
+                existing order can be edited by selecting 
+                <button class="btn btn-warning btn-xs">
+                  <i class="glyphicon glyphicon-edit"></i> Edit</button>.
+              </p>
+              <p>
+                Standard employee information will be populated from your user account, leaving you to fill in the 
+                <span class="boxed text-muted">Chain & Store #</span>, 
+                <span class="boxed text-muted">Town</span>, 
+                <span class="boxed text-muted">Serviced Date</span>, and 
+                <span class="boxed text-muted">In-Store Date</span> entry fields.
+              </p>
+              <p class="divider"> 
+                Selecting either <span class="boxed" ng-bind="vm.today | date: 'MM/dd/yy'">
+                </span><button type="button" class="btn btn-xs">
+                  <i class="text-muted glyphicon glyphicon-calendar"></i></button> date field 
+                will provide you with calendar date-pickers to assist in thier completion.
+              </p>
+              <p><u>Invoices:</u></p>
+              <p>
+                The <button class="btn btn-info btn-xs">
+                  <i class="glyphicon glyphicon-plus"></i> Add Invoice</button> 
+                button presents 
+                <span class="boxed text-muted">Invoice #</span>, 
+                <span class="boxed text-muted">Ticket #</span>, 
+                <span class="boxed text-muted">Amount $</span>, and 
+                <span class="boxed text-muted">Quantity</span> entry fields.
+              </p>
+              <p>
+                <button class="btn btn-success btn-xs">
+                  <i class="glyphicon glyphicon-ok"></i> Save</button> 
+                this invoice to the order or return to the order with 
+                <button class="btn btn-danger btn-xs">
+                  <i class="glyphicon glyphicon-new-window"></i> Cancel</button>.
+              </p>
+              <p class="divider">
+                To edit or delete an invoice select it from the list and use the corresponding 
+                <button class="btn btn-warning btn-xs">
+                  <i class="glyphicon glyphicon-edit"></i> Edit</button> or 
+                <button class="btn btn-danger btn-xs">
+                  <i class="glyphicon glyphicon-trash"></i> Delete</button> button.
+              </p>
+              <p><u>Items:</u></p>
+              <p>
+                The <button class="btn btn-info btn-xs">
+                  <i class="glyphicon glyphicon-plus"></i> Add Item</button> 
+                button provides a form containing 
+                <span class="boxed text-muted">Aisle</span>, 
+                <span class="boxed text-muted">UPC</span>, and 
+                <span class="boxed text-muted">Quantity</span>.
+              </p>
+              <p>
+                Entering keywords, UPC or bin numbers into the 
+                <span class="boxed text-muted">Description</span> field and selecting a suggestion from the pop-up results will complete the 
+                <span class="boxed text-muted">UPC</span> field for you.
+              </p>
+              <p>
+                <button class="btn btn-success btn-xs"><i class="glyphicon glyphicon-ok"></i> 
+                  Save</button> this item to the order or return to the order with 
+                <button class="btn btn-danger btn-xs">
+                  <i class="glyphicon glyphicon-new-window"></i> Cancel</button>.
+              </p>
+              <p class="divider">
+                To edit or delete an item select it from the list and use the corresponding 
+                <button class="btn btn-warning btn-xs">
+                  <i class="glyphicon glyphicon-edit"></i> Edit</button> or 
+                <button class="btn btn-danger btn-xs">
+                  <i class="glyphicon glyphicon-trash"></i> Delete</button> button.
+              </p>
+              <p><u>Save Order:</u></p>
+              <p class="divider">
+                Select <button class="btn btn-success btn-xs">
+                  <i class="glyphicon glyphicon-ok"></i> Save</button> or  
+                <button class="btn btn-danger btn-xs">
+                  <i class="glyphicon glyphicon-new-window"></i> Cancel</button> then 
+                <button class="btn btn-success btn-xs">
+                  <i class="glyphicon glyphicon-ok"></i> Confirm</button> to save or discard it, respectively.
+              </p>
+              <p><u>Send Order:</u></p>
+              <p class="divider">
+                Select <button class="btn btn-info btn-xs">
+                  <i class="glyphicon glyphicon-send"></i> Send</button> then 
+                <button class="btn btn-success btn-xs">
+                  <i class="glyphicon glyphicon-ok"></i> Confirm</button> to build a LaMi 
+                reorder sheet from your order and email it to your District Manager. The email will be cc'd to you and the order will now show a <a>Sent</a> date/time.
+              </p>
+              <p><u>Delete Order:</u></p>
+              <p class="divider">
+                Select <button class="btn btn-danger btn-xs">
+                  <i class="glyphicon glyphicon-trash"></i> Delete</button> then 
+                <button class="btn btn-success btn-xs">
+                  <i class="glyphicon glyphicon-ok"></i> Confirm</button> to delete it from your orders.
+              </p>
+              <p><u>Sort:</u></p>
+              <p class="divider">
+                Your orders are sorted by serviced date in descending order. Toggle the sort direction by using the <button class="btn btn-default btn-xs">
+                  <i class="text-muted glyphicon glyphicon-sort"></i> Sort</button> button.
+              </p>
+              <p><u>Filter:</u></p>
+              <p>
+                Selecting a linked <strong><a>Chain & Store #</a></strong> will filter the orders list to show only matching titles.
+              </p>
+              <p>
+                Selecting a <a>Sent</a> link will filter the list to show only sent orders.
+              </p>
+              <p>
+                The <button class="btn btn-default btn-xs">
+                  <i class="text-muted glyphicon glyphicon-filter"></i> Clear</button> 
+                button will remove all filters from the list.
+              </p>
+            </span>
+          </div>
+        </uib-accordion-group>
+        <uib-accordion-group heading="Notes" 
+          template-url="app/templates/accordion-template.html">
+          <div class="form-flex form-group">
+            <span class="help">
+              <p><u>Create/Edit Note:</u></p>
+              <p>
+                Here you can create notes which are shared across your team for discussion. A note is created by first selecting the <button class="btn btn-primary btn-xs">
+                  <i class="glyphicon glyphicon-pencil"></i> Create</button> button.
+              </p>
+              <p>
+                Enter a <span class="boxed text-muted">Title</span> and 
+                <span class="boxed text-muted">Message</span>, then select 
+                <button class="btn btn-success btn-xs">
+                  <i class="glyphicon glyphicon-ok"></i> Save</button> or 
+                <button class="btn btn-danger btn-xs">
+                  <i class="glyphicon glyphicon-new-window"></i> Cancel</button> to save or 
+                discard your note, respectively.
+              </p>
+              <p class="divider">
+                An existing note can be edited by selecting <button class="btn btn-warning btn-xs"> <i class="glyphicon glyphicon-edit"></i> Edit</button>.
+              </p>
+              <p><u>View/Add Comments:</u></p>
+              <p>
+                Select <button class="btn btn-info btn-xs">
+                  <i class="glyphicon glyphicon-unchecked"></i> View</button> to see a note's 
+                comments or leave a new comment.
+              </p>
+              <p>
+                To add a comment use the <button class="btn btn-info btn-xs">
+                  <i class="glyphicon glyphicon-plus"></i> Comment</button> button, enter your 
+                <span class="boxed text-muted">Comment</span> and select 
+                <button class="btn btn-success btn-xs">
+                  <i class="glyphicon glyphicon-ok"></i> Save</button>.
+              </p>
+              <p class="divider">
+                To edit or delete a comment select the corresponding 
+                <button class="btn btn-warning btn-xs">
+                  <i class="glyphicon glyphicon-edit"></i> Edit</button> or 
+                <button class="btn btn-danger btn-xs">
+                  <i class="glyphicon glyphicon-trash"></i> Delete</button> button.
+              </p>
+              <p><u>Delete Note:</u></p>
+              <p class="divider">
+                Select <button class="btn btn-danger btn-xs">
+                  <i class="glyphicon glyphicon-trash"></i> Delete</button> then 
+                <button class="btn btn-success btn-xs">
+                  <i class="glyphicon glyphicon-ok"></i> Confirm</button> to delete your note.
+              </p>
+              <p><u>Sort:</u></p>
+              <p class="divider">
+                Notes are sorted by creation date in descending order. Toggle the sort direction by using the <button class="btn btn-default btn-xs">
+                  <i class="text-muted glyphicon glyphicon-sort"></i> Sort</button> button.
+              </p>
+              <p><u>Filter:</u></p>
+              <p>
+                Selecting a <i class="text-muted glyphicon glyphicon-user"></i>
+                <a>{{vm.getCurrentUser().name}}</a> link will filter the notes list to show only notes created by that user.
+              </p>
+              <p>
+                The <button class="btn btn-default btn-xs">
+                  <i class="text-muted glyphicon glyphicon-filter"></i> Clear</button> 
+                button will remove all filters from the list.
+              </p>
+            </span>
+          </div>
+        </uib-accordion-group>
+        <uib-accordion-group heading="Settings" 
+          template-url="app/templates/accordion-template.html">
+          <div class="form-flex form-group">
+            <span class="help">
+
+            </span>
+          </div>
+        </uib-accordion-group>
+      </uib-accordion>
+    </div>
+  </div>
+</div>
