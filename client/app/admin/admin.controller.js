@@ -31,7 +31,7 @@ class AdminController {
 
         // User details updated, refresh list
         this.users = this.User.query();
-        this.edit = false;
+        this.resetEdit();
         this.alertService.add('success', 'User updated!', 5000);
       })
       .catch(err => {
@@ -49,7 +49,7 @@ class AdminController {
 
         // User password updated, refresh list
         this.users = this.User.query();
-        this.edit = false;
+        this.resetEdit();
         this.alertService.add('success', 'Password updated!', 5000);
       })
       .catch(err => {

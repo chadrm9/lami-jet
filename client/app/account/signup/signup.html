@@ -2,173 +2,140 @@
   <div class="row">
     <div class="col-xs-12">
       <h4 class="page-header"><div ncy-breadcrumb></div></h4>
-      <form class="form" id="newUser" name="newUser" ng-submit="vm.saveUser(newUser)" novalidate>
+      <form class="form" id="newUser" name="newUser" ng-submit="vm.saveUser(newUser)" 
+        novalidate>
 
         <!-- Username -->
-        <div class="form-flex form-group" ng-class="{ 'has-error': newUser.name.$invalid 
-                                                                  && vm.submitted }">
-          <div class="secondary signup">
-            <label for="name"><span class="text-muted">Username</span></label>
-          </div>
-          <div class="primary">
-            <input type="text" id="name" name="name" class="form-control" ng-model="vm.user.name"
-              placeholder="Username (first name)" required mongoose-error/>
+        <div class="form-group" ng-class="{ 'has-error': newUser.name.$invalid 
+                                                         && vm.submitted }">
+          <div class="input-group">
+            <span class="signup input-group-addon" ng-bind="'Username'"></span>
+            <input type="text" id="name" name="name" class="form-control" 
+              ng-model="vm.user.name" placeholder="Username (first name)" required mongoose-error/>
           </div>
         </div>
-        <div class="form-flex form-group error" ng-class="{ 'has-error': newUser.name.$invalid 
-                                                                        && vm.submitted }">
-          <div class="secondary signup"></div>
-          <div class="primary">
-            <p class="help-block" ng-show="newUser.name.$error.required && vm.submitted" 
-              ng-bind="'Enter username'"></p>
-            <p class="help-block" ng-show="newUser.name.$error.mongoose" ng-bind="vm.errors.name"></p>
-          </div>
+        <div class="form-group error" ng-class="{ 'has-error': newUser.name.$invalid 
+                                                               && vm.submitted }">
+          <p class="help-block" ng-show="newUser.name.$error.required && vm.submitted" 
+            ng-bind="'Enter username'"></p>
+          <p class="help-block" ng-show="newUser.name.$error.mongoose" 
+            ng-bind="vm.errors.name"></p>
         </div>
 
         <!-- First Name -->
-        <div class="form-flex form-group" ng-class="{ 'has-error': newUser.firstName.$invalid 
-                                                                  && vm.submitted }">
-          <div class="secondary signup">
-            <label for="firstName"><span class="text-muted">First Name</span></label>
-          </div>
-          <div class="primary">
+        <div class="form-group" ng-class="{ 'has-error': newUser.firstName.$invalid 
+                                                         && vm.submitted }">
+          <div class="input-group">
+            <span class="signup input-group-addon" ng-bind="'First Name'"></span>
             <input type="text" id="firstName" name="firstName" class="form-control" 
               ng-model="vm.user.firstName" placeholder="First Name" required/>
           </div>
         </div>
-        <div class="form-flex form-group error" ng-class="{ 'has-error': newUser.firstName.$invalid 
-                                                                        && vm.submitted }">
-          <div class="secondary signup"></div>
-          <div class="primary">
-            <p class="help-block" ng-show="newUser.firstName.$error.required && vm.submitted" 
-              ng-bind="'Enter first name'"></p>
-          </div>
+        <div class="form-group error" ng-class="{ 'has-error': newUser.firstName.$invalid 
+                                                               && vm.submitted }">
+          <p class="help-block" ng-show="newUser.firstName.$error.required && vm.submitted" 
+            ng-bind="'Enter first name'"></p>
         </div>
 
         <!-- Last Name -->
-        <div class="form-flex form-group" ng-class="{ 'has-error': newUser.lastName.$invalid 
-                                                                  && vm.submitted }">
-          <div class="secondary signup">
-            <label for="lastName"><span class="text-muted">Last Name</span></label>
-          </div>
-          <div class="primary">
+        <div class="form-group" ng-class="{ 'has-error': newUser.lastName.$invalid 
+                                                         && vm.submitted }">
+          <div class="input-group">
+            <span class="signup input-group-addon" ng-bind="'Last Name'"></span>
             <input type="text" id="lastName" name="lastName" class="form-control" 
               ng-model="vm.user.lastName" placeholder="Last Name" required/>
           </div>
         </div>
-        <div class="form-flex form-group error" ng-class="{ 'has-error': newUser.lastName.$invalid 
-                                                                        && vm.submitted }">
-          <div class="secondary signup"></div>
-          <div class="primary">
-            <p class="help-block" ng-show="newUser.lastName.$error.required && vm.submitted" 
-              ng-bind="'Enter last name'"></p>
-          </div>
+        <div class="form-group error" ng-class="{ 'has-error': newUser.lastName.$invalid 
+                                                               && vm.submitted }">
+          <p class="help-block" ng-show="newUser.lastName.$error.required && vm.submitted" 
+            ng-bind="'Enter last name'"></p>
         </div>
 
         <!-- Email -->
-        <div class="form-flex form-group" ng-class="{ 'has-error': newUser.email.$invalid 
-                                                                  && vm.submitted }">
-          <div class="secondary signup">
-            <label for="email"><span class="text-muted">Email</span></label>
-          </div>
-          <div class="primary">
-            <input type="email" id="email" name="email" class="form-control" ng-model="vm.user.email"
-              placeholder="Email" required mongoose-error/>
+        <div class="form-group" ng-class="{ 'has-error': newUser.email.$invalid 
+                                                         && vm.submitted }">
+          <div class="input-group">
+            <span class="signup input-group-addon" ng-bind="'Email'"></span>
+            <input type="email" id="email" name="email" class="form-control" 
+              ng-model="vm.user.email" placeholder="Email" required mongoose-error/>
           </div>
         </div>
-        <div class="form-flex form-group error" ng-class="{ 'has-error': newUser.email.$invalid 
-                                                                        && vm.submitted }">
-          <div class="secondary signup"></div>
-          <div class="primary">
-            <p class="help-block" ng-show="newUser.email.$error.email && vm.submitted" 
-              ng-bind="'Enter valid email address'"></p>
-            <p class="help-block" ng-show="newUser.email.$error.required && vm.submitted" 
-              ng-bind="'Enter email address'"></p>
-            <p class="help-block" ng-show="newUser.email.$error.mongoose" ng-bind="vm.errors.email"></p>
-          </div>
+        <div class="form-group error" ng-class="{ 'has-error': newUser.email.$invalid 
+                                                               && vm.submitted }">
+          <p class="help-block" ng-show="newUser.email.$error.email && vm.submitted" 
+            ng-bind="'Enter valid email address'"></p>
+          <p class="help-block" ng-show="newUser.email.$error.required && vm.submitted" 
+            ng-bind="'Enter email address'"></p>
+          <p class="help-block" ng-show="newUser.email.$error.mongoose" 
+            ng-bind="vm.errors.email"></p>
         </div>
 
         <!-- Salesman # -->
-        <div class="form-flex form-group" ng-class="{ 'has-error': newUser.salesmanNo.$invalid 
-                                                                  && vm.submitted }">
-          <div class="secondary signup">
-            <label for="salesmanNo"><span class="text-muted">Salesman #</span></label>
-          </div>
-          <div class="primary">
+        <div class="form-group" ng-class="{ 'has-error': newUser.salesmanNo.$invalid 
+                                                         && vm.submitted }">
+          <div class="input-group">
+            <span class="signup input-group-addon" ng-bind="'Salesman #'"></span>
             <input type="text" id="salesmanNo" name="salesmanNo" class="form-control" 
               ng-model="vm.user.salesmanNo" placeholder="Salesman #" required/>
           </div>
         </div>
-        <div class="form-flex form-group error" ng-class="{ 'has-error': newUser.salesmanNo.$invalid 
-                                                                        && vm.submitted }">
-          <div class="secondary signup"></div>
-          <div class="primary">
-            <p class="help-block" ng-show="newUser.salesmanNo.$error.required && vm.submitted" 
-              ng-bind="'Enter salesman #'"></p>
-          </div>
+        <div class="form-group error" ng-class="{ 'has-error': newUser.salesmanNo.$invalid 
+                                                               && vm.submitted }">
+          <p class="help-block" ng-show="newUser.salesmanNo.$error.required && vm.submitted" 
+            ng-bind="'Enter salesman #'"></p>
         </div>
 
         <!-- Rep Phone # -->
-        <div class="form-flex form-group" ng-class="{ 'has-error': newUser.repPhoneNo.$invalid 
-                                                                  && vm.submitted }">
-          <div class="secondary signup">
-            <label for="repPhoneNo"><span class="text-muted">Rep Phone #</span></label>
-          </div>
-          <div class="primary">
+        <div class="form-group" ng-class="{ 'has-error': newUser.repPhoneNo.$invalid 
+                                                         && vm.submitted }">
+          <div class="input-group">
+            <span class="signup input-group-addon" ng-bind="'Rep Phone #'"></span>
             <input type="text" id="repPhoneNo" name="repPhoneNo" class="form-control" 
               ng-model="vm.user.repPhoneNo" placeholder="(123) 456-789" required/>
           </div>
         </div>
-        <div class="form-flex form-group error" ng-class="{ 'has-error': newUser.repPhoneNo.$invalid 
-                                                                        && vm.submitted }">
-          <div class="secondary signup"></div>
-          <div class="primary">
-            <p class="help-block" ng-show="newUser.repPhoneNo.$error.required && vm.submitted" 
-              ng-bind="'Enter rep phone #'"></p>
-          </div>
+        <div class="form-group error" ng-class="{ 'has-error': newUser.repPhoneNo.$invalid 
+                                                               && vm.submitted }">
+          <p class="help-block" ng-show="newUser.repPhoneNo.$error.required && vm.submitted" 
+            ng-bind="'Enter rep phone #'"></p>
         </div>
 
         <!-- Password -->
-        <div class="form-flex form-group" ng-class="{ 'has-error': newUser.password.$invalid 
-                                                                  && vm.submitted }">
-          <div class="secondary signup">
-            <label for="password"><span class="text-muted">Password</span></label>
-          </div>
-          <div class="primary">
+        <div class="form-group" ng-class="{ 'has-error': newUser.password.$invalid 
+                                                         && vm.submitted }">
+          <div class="input-group">
+            <span class="signup input-group-addon" ng-bind="'Password'"></span>
             <input type="password" id="password" name="password" class="form-control" 
               ng-model="vm.user.password" ng-minlength="3" placeholder="Password" required mongoose-error/>
           </div>
         </div>
-        <div class="form-flex form-group error" ng-class="{ 'has-error': newUser.password.$invalid 
-                                                                        && vm.submitted }">
-          <div class="secondary signup"></div>
-          <div class="primary">
-            <p class="help-block" ng-show="(newUser.password.$error.minlength || 
-                                            newUser.password.$error.required) && vm.submitted" 
-                                            ng-bind="'Password must be at least 3 characters'"></p>
-            <p class="help-block" ng-show="newUser.password.$error.mongoose" ng-bind="vm.errors.password"></p>
-          </div>
+        <div class="form-group error" ng-class="{ 'has-error': newUser.password.$invalid 
+                                                               && vm.submitted }">
+          <p class="help-block" ng-show="(newUser.password.$error.minlength || 
+                                          newUser.password.$error.required) && vm.submitted" 
+            ng-bind="'Password must be at least 3 characters'">
+          </p>
+          <p class="help-block" ng-show="newUser.password.$error.mongoose" 
+            ng-bind="vm.errors.password"></p>
         </div>
 
         <!-- Confirm Password -->
-        <div class="form-flex form-group" ng-class="{'has-error': newUser.confirmPassword.$invalid 
-                                                                  && vm.submitted}">
-          <div class="secondary signup">
-            <label for="confirmPassword"><span class="text-muted">Confirm Password</span></label>
-          </div>
-          <div class="primary">
-            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" 
-              ng-model="vm.user.confirmPassword" placeholder="Confirm Password" match="vm.user.password" 
-              ng-minlength="3" required/>
+        <div class="form-group" ng-class="{'has-error': newUser.confirmPassword.$invalid 
+                                                        && vm.submitted}">
+          <div class="input-group">
+            <span class="signup input-group-addon" ng-bind="'Confirm Password'"></span>
+            <input type="password" id="confirmPassword" name="confirmPassword" 
+              class="form-control" ng-model="vm.user.confirmPassword" 
+              placeholder="Confirm Password" match="vm.user.password" ng-minlength="3" 
+              required/>
           </div>
         </div>
-        <div class="form-flex form-group error" ng-class="{'has-error': newUser.confirmPassword.$invalid 
-                                                                  && vm.submitted}">
-          <div class="secondary signup"></div>
-          <div class="primary">
-            <p class="help-block" ng-show="newUser.confirmPassword.$error.match && vm.submitted" 
-              ng-bind="'Passwords must match'"></p>
-          </div>
+        <div class="form-group error" ng-class="{'has-error': newUser.confirmPassword.$invalid 
+                                                              && vm.submitted}">
+          <p class="help-block" ng-show="newUser.confirmPassword.$error.match && vm.submitted" 
+            ng-bind="'Passwords must match'">
+          </p>
         </div>
 
         <!-- Save/Cancel buttons -->

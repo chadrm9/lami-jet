@@ -13,8 +13,11 @@
 .user-list li:last-child {
   border-bottom: none;
 }
-.form-flex .secondary.users {
-  min-width: 95px;
+.user.input-group-addon {
+  min-width: 108px;
+}
+.password.input-group-addon {
+  min-width: 141px;
 }
 .form.password {
   border-top: 1px solid #eee;

@@ -5,44 +5,41 @@
       <form class="form" name="settings" ng-submit="vm.saveSettings(form)" novalidate>
 
         <div class="form-flex form-group">
-          <div class="secondary settings">
+          <div class="input-group">
             <div class="btn-group">
               <label class="btn btn-info" ng-model="vm.user.settings.autoLoadProducts" 
                 uib-btn-radio="true" ng-bind="'Yes'" ng-change="vm.saveSettings()"></label>
               <label class="btn btn-info" ng-model="vm.user.settings.autoLoadProducts" 
                 uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
             </div>
-          </div>
-          <div class="primary">
-            <label for="autoLoadProducts"><span class="text-muted" ng-bind="'Automatically load catalog data on login'"></span></label>
+            <label for="autoLoadProducts">
+              <span class="text-muted" ng-bind="'Load catalog data on login'"></span></label>
           </div>
         </div>
 
         <div class="form-flex form-group">
-          <div class="secondary settings">
+          <div class="input-group">
             <div class="btn-group">
               <label class="btn btn-info" ng-model="vm.user.settings.autoNextItem" 
                 uib-btn-radio="true" ng-bind="'Yes'" ng-change="vm.saveSettings()"></label>
               <label class="btn btn-info" ng-model="vm.user.settings.autoNextItem" 
                 uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
             </div>
-          </div>
-          <div class="primary">
-            <label for="autoNextItem"><span class="text-muted" ng-bind="'Automatically open a new item after an item is saved to an order'"></span></label>
+            <label for="autoNextItem"><span class="text-muted" 
+              ng-bind="'Open a new item after an item is saved'"></span></label>
           </div>
         </div>
 
         <div class="form-flex form-group">
-          <div class="secondary settings">
+          <div class="input-group">
             <div class="btn-group">
               <label class="btn btn-info" ng-model="vm.user.settings.hideSent" 
                 uib-btn-radio="true" ng-bind="'Yes'" ng-change="vm.saveSettings()"></label>
               <label class="btn btn-info" ng-model="vm.user.settings.hideSent" 
                 uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
             </div>
-          </div>
-          <div class="primary">
-            <label for="hideSent"><span class="text-muted" ng-bind="'Hide sent orders'"></span></label>
+            <label for="hideSent">
+              <span class="text-muted" ng-bind="'Hide sent orders'"></span></label>
           </div>
         </div>
       </form>
@@ -54,73 +51,66 @@
         </h5><br>
 
         <!-- Password -->
-        <div class="form-flex form-group" ng-class="{ 'has-error': form.password.$invalid 
-                                                                  && vm.submitted }">
-          <div class="secondary settings">
-            <label for="password"><span class="text-muted">Current Password</span></label>
-          </div>
-          <div class="primary">
+        <div class="form-group" ng-class="{ 'has-error': form.password.$invalid 
+                                                         && vm.submitted }">
+          <div class="input-group">
+            <span class="password input-group-addon" ng-bind="'Current Password'"></span>
             <input type="password" id="password" name="password" class="form-control" 
               ng-model="vm.user.oldPassword" ng-minlength="3" placeholder="Current Password" required mongoose-error/>
           </div>
         </div>
-        <div class="form-flex form-group error" ng-class="{ 'has-error': form.password.$invalid 
-                                                                        && vm.submitted }">
-          <div class="secondary settings"></div>
-          <div class="primary">
-            <p class="help-block" ng-show="form.password.$error.required && vm.submitted" 
-                                  ng-bind="'Enter current password'"></p>
-            <p class="help-block" ng-show="form.password.$error.mongoose" ng-bind="vm.errors.password"></p>
-          </div>
+        <div class="form-group error" ng-class="{ 'has-error': form.password.$invalid 
+                                                               && vm.submitted }">
+          <p class="help-block" ng-show="form.password.$error.required && vm.submitted" 
+            ng-bind="'Enter current password'"></p>
+          <p class="help-block" ng-show="form.password.$error.mongoose" 
+            ng-bind="vm.errors.password">
+          </p>
         </div>
 
         <!-- New Password -->
-        <div class="form-flex form-group" ng-class="{ 'has-error': form.newPassword.$invalid 
-                                                                  && vm.submitted }">
-          <div class="secondary settings">
-            <label for="newPassword"><span class="text-muted">New Password</span></label>
-          </div>
-          <div class="primary">
+        <div class="form-group" ng-class="{ 'has-error': form.newPassword.$invalid 
+                                                         && vm.submitted }">
+          <div class="input-group">
+            <span class="password input-group-addon" ng-bind="'New Password'"></span>
             <input type="password" id="newPassword" name="newPassword" class="form-control" 
               ng-model="vm.user.newPassword" ng-minlength="3" placeholder="New Password" required mongoose-error/>
           </div>
         </div>
-        <div class="form-flex form-group error" ng-class="{ 'has-error': form.newPassword.$invalid 
-                                                                        && vm.submitted }">
-          <div class="secondary settings"></div>
-          <div class="primary">
-            <p class="help-block" ng-show="(form.newPassword.$error.minlength || 
-                                            form.newPassword.$error.required) && vm.submitted" 
-                                            ng-bind="'Password must be at least 3 characters'"></p>
-            <p class="help-block" ng-show="form.newPassword.$error.mongoose" 
-                                  ng-bind="vm.errors.newPassword"></p>
-          </div>
+        <div class="form-group error" ng-class="{ 'has-error': form.newPassword.$invalid 
+                                                               && vm.submitted }">
+          <p class="help-block" ng-show="(form.newPassword.$error.minlength || 
+                                          form.newPassword.$error.required) && vm.submitted" 
+            ng-bind="'Password must be at least 3 characters'">
+          </p>
+          <p class="help-block" ng-show="form.newPassword.$error.mongoose" 
+            ng-bind="vm.errors.newPassword">
+          </p>
         </div>
 
         <!-- Confirm Password -->
-        <div class="form-flex form-group" ng-class="{'has-error': form.confirmPassword.$invalid 
-                                                                  && vm.submitted}">
-          <div class="secondary settings">
-            <label for="confirmPassword"><span class="text-muted">Confirm Password</span></label>
-          </div>
-          <div class="primary">
-            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" 
-              ng-model="vm.user.confirmPassword" placeholder="Confirm Password" match="vm.user.newPassword"
+        <div class="form-group" ng-class="{'has-error': form.confirmPassword.$invalid 
+                                                        && vm.submitted}">
+          <div class="input-group">
+            <span class="password input-group-addon" ng-bind="'Confirm Password'"></span>
+            <input type="password" id="confirmPassword" name="confirmPassword" 
+              class="form-control" ng-model="vm.user.confirmPassword" 
+              placeholder="Confirm Password" match="vm.user.newPassword" 
               ng-minlength="3" required/>
           </div>
         </div>
-        <div class="form-flex form-group error" ng-class="{'has-error': form.confirmPassword.$invalid 
-                                                                  && vm.submitted}">
-          <div class="secondary settings"></div>
-          <div class="primary">
-            <p class="help-block" ng-show="form.confirmPassword.$error.match && vm.submitted" 
-              ng-bind="'Passwords must match'"></p>
-          </div>
+        <div class="form-group error" ng-class="{'has-error': form.confirmPassword.$invalid 
+                                                              && vm.submitted}">
+          <p class="help-block" ng-show="form.confirmPassword.$error.match && vm.submitted" 
+            ng-bind="'Passwords must match'">
+          </p>
         </div>
 
         <p class="help-block" ng-bind="vm.message"></p>
 
-        <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-ok"></i> Change</button>
+        <!-- Change button -->
+        <button class="btn btn-success" type="submit">
+          <i class="glyphicon glyphicon-ok"></i> Change</button>
 
       </form>
     </div>
