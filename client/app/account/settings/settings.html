@@ -4,43 +4,34 @@
       <h4 class="page-header"><div ncy-breadcrumb></div></h4>
       <form class="form" name="settings" ng-submit="vm.saveSettings(form)" novalidate>
 
-        <div class="form-flex form-group">
-          <div class="input-group">
+        <div class="form-group">
             <div class="btn-group">
               <label class="btn btn-info" ng-model="vm.user.settings.autoLoadProducts" 
                 uib-btn-radio="true" ng-bind="'Yes'" ng-change="vm.saveSettings()"></label>
               <label class="btn btn-info" ng-model="vm.user.settings.autoLoadProducts" 
                 uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
             </div>
-            <label for="autoLoadProducts">
-              <span class="text-muted" ng-bind="'Load catalog data on login'"></span></label>
-          </div>
+            <span ng-bind="'Load catalog at login'"></span>
         </div>
 
-        <div class="form-flex form-group">
-          <div class="input-group">
+        <div class="form-group">
             <div class="btn-group">
               <label class="btn btn-info" ng-model="vm.user.settings.autoNextItem" 
                 uib-btn-radio="true" ng-bind="'Yes'" ng-change="vm.saveSettings()"></label>
               <label class="btn btn-info" ng-model="vm.user.settings.autoNextItem" 
                 uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
             </div>
-            <label for="autoNextItem"><span class="text-muted" 
-              ng-bind="'Open a new item after an item is saved'"></span></label>
-          </div>
+            <span ng-bind="'Cascade add new items'"></span>
         </div>
 
-        <div class="form-flex form-group">
-          <div class="input-group">
+        <div class="form-group">
             <div class="btn-group">
               <label class="btn btn-info" ng-model="vm.user.settings.hideSent" 
                 uib-btn-radio="true" ng-bind="'Yes'" ng-change="vm.saveSettings()"></label>
               <label class="btn btn-info" ng-model="vm.user.settings.hideSent" 
                 uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
             </div>
-            <label for="hideSent">
-              <span class="text-muted" ng-bind="'Hide sent orders'"></span></label>
-          </div>
+            <span ng-bind="'Hide sent orders'"></span>
         </div>
       </form>
 
