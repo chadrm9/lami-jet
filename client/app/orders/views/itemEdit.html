@@ -8,75 +8,58 @@
 <form class="form" id="editItem" name="editItem" ng-submit="vm.saveItem(editItem)" novalidate>
 
   <!-- Aisle -->
-  <div class="form-flex form-group" ng-class="{ 'has-error': editItem.aisle.$invalid 
-                                                              && vm.submitted }">
-    <div class="secondary items">
-      <label for="aisle"><span class="text-muted">Aisle</span></label>
-    </div>
-    <div class="primary">
+  <div class="form-group" ng-class="{ 'has-error': editItem.aisle.$invalid 
+                                                   && vm.submitted }">
+    <div class="input-group">
+      <span class="item input-group-addon" ng-bind="'Aisle'"></span>
       <input type="text" id="aisle" name="aisle" class="form-control" 
-              ng-model="vm.item.aisle" placeholder="Aisle" required>
+        ng-model="vm.item.aisle" placeholder="Aisle" required>
     </div>
   </div>
-  <div class="form-flex form-group error" ng-class="{ 'has-error': editItem.aisle.$invalid 
-                                                                      && vm.submitted }">
-    <div class="secondary items"></div>
-    <div class="primary">
-      <p class="help-block" ng-show="editItem.aisle.$error.required && vm.submitted" 
-        ng-bind="'Enter aisle'"></p>
-    </div>
+  <div class="form-group error" ng-class="{ 'has-error': editItem.aisle.$invalid 
+                                                         && vm.submitted }">
+    <p class="help-block" ng-show="editItem.aisle.$error.required && vm.submitted" 
+      ng-bind="'Enter aisle'"></p>
   </div>
 
   <!-- Description -->
-  <div class="form-flex form-group" ng-class="{ 'has-error': editItem.description.$invalid 
-                                                                      && vm.submitted }">
-    <div class="secondary items">
-      <label for="description"><span class="text-muted">Desc.</span></label>
-    </div>
-    <div class="primary">
+  <div class="form-group" ng-class="{ 'has-error': editItem.description.$invalid 
+                                                   && vm.submitted }">
+    <div class="input-group">
+    <span class="item input-group-addon" ng-bind="'Description'"></span>
       <input type="text" id="description" name="description" class="form-control" 
-        ng-change="vm.item.upc = ''" ng-model="vm.item.description" uib-typeahead="product.description as 
-        product.description for product in vm.products | filter: $viewValue | unique: 'upc' | limitTo:8" typeahead-editable="false" typeahead-on-select="vm.item.upc = $item.upc" 
-        placeholder="Description" required>
+        ng-change="vm.item.upc = ''" ng-model="vm.item.description" 
+        uib-typeahead="product.description as product.description for product in vm.products | 
+        filter: $viewValue | unique: 'upc' | limitTo:8" typeahead-editable="false" typeahead-on-select="vm.item.upc = $item.upc" placeholder="Description" required>
     </div>
   </div>
-  <div class="form-flex form-group error" ng-class="{ 'has-error': editItem.description.$invalid 
-                                                                      && vm.submitted }">
-    <div class="secondary items"></div>
-    <div class="primary">
-      <p class="help-block" ng-show="editItem.description.$error.required && vm.submitted" 
-        ng-bind="'Enter description'"></p>
-    </div>
+  <div class="form-group error" ng-class="{ 'has-error': editItem.description.$invalid 
+                                                         && vm.submitted }">
+    <p class="help-block" ng-show="editItem.description.$error.required && vm.submitted" 
+      ng-bind="'Enter description'"></p>
   </div>
 
   <!-- UPC -->
-  <div class="form-flex form-group">
-    <div class="secondary items">
-      <label for="upc"><span class="text-muted">UPC</span></label>
-    </div>
-    <div class="primary">
-      <input type="text" id="upc" name="upc" class="form-control" ng-model="vm.item.upc" placeholder="UPC" 
-        disabled>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="item input-group-addon" ng-bind="'UPC'"></span>
+      <input type="text" id="upc" name="upc" class="form-control" ng-model="vm.item.upc" 
+        placeholder="UPC" disabled>
     </div>
   </div>
 
   <!-- Quantity -->
-  <div class="form-flex form-group" ng-class="{ 'has-error': editItem.itemQuantity.$invalid 
-                                                                      && vm.submitted }">
-    <div class="secondary items">
-      <label for="itemQuantity"><span class="text-muted">Quantity</span></label>
-    </div>
-    <div class="primary">
+  <div class="form-group" ng-class="{ 'has-error': editItem.itemQuantity.$invalid 
+                                                   && vm.submitted }">
+    <div class="input-group">
+      <span class="item input-group-addon" ng-bind="'Quantity'"></span>
       <input type="text" id="itemQuantity" name="itemQuantity" class="form-control" 
-              ng-model="vm.item.quantity" placeholder="Quantity" required>
+        ng-model="vm.item.quantity" placeholder="Quantity" required>
     </div>
   </div>
-  <div class="form-flex form-group error" ng-class="{ 'has-error': editItem.itemQuantity.$invalid 
-                                                                      && vm.submitted }">
-    <div class="secondary items"></div>
-    <div class="primary">
-      <p class="help-block" ng-show="editItem.itemQuantity.$error.required && vm.submitted" 
-        ng-bind="'Enter quantity'"></p>
-    </div>
+  <div class="form-group error" ng-class="{ 'has-error': editItem.itemQuantity.$invalid 
+                                                         && vm.submitted }">
+    <p class="help-block" ng-show="editItem.itemQuantity.$error.required && vm.submitted" 
+      ng-bind="'Enter quantity'"></p>
   </div>
 </form>

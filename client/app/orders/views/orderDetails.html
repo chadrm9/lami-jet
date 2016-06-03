@@ -6,95 +6,75 @@
 <form class="form" id="editOrder" name="editOrder" ng-submit="vm.saveOrder(editOrder)" novalidate>
 
   <!-- Full Name -->
-  <div class="form-flex form-group">
-    <div class="secondary orders">
-      <label for="fullName"><span class="text-muted">Full Name</span></label>
-    </div>
-    <div class="primary">
+  <div class="form-group">
+    <div class="input-group">
+      <span class="order input-group-addon" ng-bind="'Full Name'"></span>
       <input type="text" id="fullName" name="fullName" class="form-control" 
         ng-model="vm.fullName" placeholder="Full Name" disabled required>
     </div>
   </div>
 
   <!-- Salesman # -->
-  <div class="form-flex form-group">
-    <div class="secondary orders">
-      <label for="salesmanNo"><span class="text-muted">Salesman #</span></label>
-    </div>
-    <div class="primary">
+  <div class="form-group">
+    <div class="input-group">
+      <span class="order input-group-addon" ng-bind="'Salesman #'"></span>
       <input type="text" id="salesmanNo" name="salesmanNo" class="form-control" 
         ng-model="vm.order.user.salesmanNo" placeholder="Salesman #" disabled required>
     </div>
   </div>
 
   <!-- Rep Phone # -->
-  <div class="form-flex form-group">
-    <div class="secondary orders">
-      <label for="repPhoneNo"><span class="text-muted">Rep Phone #</span></label>
-    </div>
-    <div class="primary">
+  <div class="form-group">
+    <div class="input-group">
+      <span class="order input-group-addon" ng-bind="'Rep Phone #'"></span>
       <input type="text" id="repPhoneNo" name="repPhoneNo" class="form-control" 
         ng-model="vm.order.user.repPhoneNo" placeholder="Rep Phone #" disabled required>
     </div>
   </div>
 
   <!-- District Mgr -->
-  <div class="form-flex form-group">
-    <div class="secondary orders">
-      <label for="districtMgr"><span class="text-muted">District Mgr</span></label>
-    </div>
-    <div class="primary">
+  <div class="form-group">
+    <div class="input-group">
+      <span class="order input-group-addon" ng-bind="'District Mgr'"></span>
       <input type="text" id="districtMgr" name="districtMgr" class="form-control" 
         ng-model="vm.districtMgr" placeholder="District Mgr" disabled required>
     </div>
   </div>
 
   <!-- Chain & Store # -->
-  <div class="form-flex form-group" ng-class="{ 'has-error': editOrder.chainStore.$invalid 
-                                                              && vm.submitted }">
-    <div class="secondary orders">
-      <label for="chainStore"><span class="text-muted">Chain & Store #</span></label>
-    </div>
-    <div class="primary">
+  <div class="form-group" ng-class="{ 'has-error': editOrder.chainStore.$invalid 
+                                                   && vm.submitted }">
+    <div class="input-group">
+      <span class="order input-group-addon" ng-bind="'Chain & Store #'"></span>
       <input type="text" id="chainStore" name="chainStore" class="form-control" 
-              ng-model="vm.order.chainStore" placeholder="(e.g. ZKRLO 123)" required>
+        ng-model="vm.order.chainStore" placeholder="(e.g. ZKRLO 123)" required>
     </div>
   </div>
-  <div class="form-flex form-group error" ng-class="{ 'has-error': editOrder.chainStore.$invalid 
-                                                                    && vm.submitted }">
-    <div class="secondary orders"></div>
-    <div class="primary">
-      <p class="help-block" ng-show="editOrder.chainStore.$error.required && vm.submitted" 
-        ng-bind="'Enter chain & store #'"></p>
-    </div>
+  <div class="form-group error" ng-class="{ 'has-error': editOrder.chainStore.$invalid 
+                                                         && vm.submitted }">
+    <p class="help-block" ng-show="editOrder.chainStore.$error.required && vm.submitted" 
+      ng-bind="'Enter chain & store #'"></p>
   </div>
 
   <!-- Town -->
-  <div class="form-flex form-group" ng-class="{ 'has-error': editOrder.town.$invalid 
-                                                              && vm.submitted }">
-    <div class="secondary orders">
-      <label for="town"><span class="text-muted">Town</span></label>
-    </div>
-    <div class="primary">
+  <div class="form-group" ng-class="{ 'has-error': editOrder.town.$invalid 
+                                                   && vm.submitted }">
+    <div class="input-group">
+      <span class="order input-group-addon" ng-bind="'Town'"></span>
       <input type="text" id="town" name="town" class="form-control" ng-model="vm.order.town" 
-              placeholder="Town" required>
+        placeholder="Town" required>
     </div>
   </div>
-  <div class="form-flex form-group error" ng-class="{ 'has-error': editOrder.town.$invalid 
-                                                                    && vm.submitted }">
-    <div class="secondary orders"></div>
-    <div class="primary">
-      <p class="help-block" ng-show="editOrder.town.$error.required && vm.submitted" 
-        ng-bind="'Enter town'"></p>
-    </div>
+  <div class="form-group error" ng-class="{ 'has-error': editOrder.town.$invalid 
+                                                         && vm.submitted }">
+    <p class="help-block" ng-show="editOrder.town.$error.required && vm.submitted" 
+      ng-bind="'Enter town'"></p>
   </div>
 
   <!-- Date Serviced -->
-  <div class="form-flex form-group">
-    <div class="secondary orders">
-      <label for="dateServiced"><span class="text-muted">Serviced Date</span></label>
-    </div>
-    <div class="primary">
+  <div class="form-group">
+    <div class="input-group">
+      <span class="order input-group-addon" ng-bind="'Date Serviced'"></span>
       <p class="input-group" ng-click="vm.dateServicedCal = !vm.dateServicedCal">
         <input type="text" uib-datepicker-popup="{{vm.dateFormat}}" id="dateServiced" 
           name="dateServiced" class="handicapped form-control" ng-model="vm.order.dateServiced" 
@@ -115,11 +95,9 @@
   </div>
 
   <!-- Date In-Store -->
-  <div class="form-flex form-group">
-    <div class="secondary orders">
-      <label for="dateInStore"><span class="text-muted">In-Store Date</span></label>
-    </div>
-    <div class="primary">
+  <div class="form-group">
+    <div class="input-group">
+      <span class="order input-group-addon" ng-bind="'Date In-Store'"></span>
       <p class="input-group" ng-click="this.dateInStoreCal = !this.dateInStoreCal">
         <input type="text" uib-datepicker-popup="{{vm.dateFormat}}" id="dateInStore" 
           name="dateInStore" class="handicapped form-control" ng-model="vm.order.dateInStore" 
@@ -134,7 +112,8 @@
   <div class="inline-cal" ng-show="vm.dateInStoreCal">
     <div style="display:inline-block;">
       <uib-datepicker ng-model="vm.order.dateInStore" class="well well-sm" 
-        datepicker-options="vm.inlineOptions" ng-change="this.dateInStoreCal = !this.dateInStoreCal">
+        datepicker-options="vm.inlineOptions" 
+        ng-change="this.dateInStoreCal = !this.dateInStoreCal">
       </uib-datepicker>
     </div>
   </div>

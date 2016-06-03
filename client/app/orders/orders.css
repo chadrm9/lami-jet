@@ -5,14 +5,14 @@ h5 {
 .order-list {
 	margin: 0;
 }
-.form-flex .secondary.orders {
-  min-width: 112px;
+.order.input-group-addon {
+  min-width: 125px;
 }
-.form-flex .secondary.invoices {
-  min-width: 73px;
+.invoice.input-group-addon {
+  min-width: 86px;
 }
-.form-flex .secondary.items {
-  min-width: 65px;
+.item.input-group-addon {
+  min-width: 96px;
 }
 .order-list li {
 	border: none;
