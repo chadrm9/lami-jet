@@ -1,3 +1,6 @@
+.settingText {
+  padding-left: 12px;
+}
 .password.input-group-addon {
   min-width: 141px;
 }

@@ -11,7 +11,7 @@
               <label class="btn btn-info" ng-model="vm.user.settings.autoLoadProducts" 
                 uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
             </div>
-            <span ng-bind="'Load catalog at login'"></span>
+            <span class="settingText" ng-bind="'Load catalog at login'"></span>
         </div>
 
         <div class="form-group">
@@ -21,7 +21,7 @@
               <label class="btn btn-info" ng-model="vm.user.settings.autoNextItem" 
                 uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
             </div>
-            <span ng-bind="'Cascade add new items'"></span>
+            <span class="settingText" ng-bind="'Cascade add new items'"></span>
         </div>
 
         <div class="form-group">
@@ -31,7 +31,7 @@
               <label class="btn btn-info" ng-model="vm.user.settings.hideSent" 
                 uib-btn-radio="false" ng-bind="'No'" ng-change="vm.saveSettings()"></label>
             </div>
-            <span ng-bind="'Hide sent orders'"></span>
+            <span class="settingText" ng-bind="'Hide sent orders'"></span>
         </div>
       </form>
 
