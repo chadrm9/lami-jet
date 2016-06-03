@@ -11,7 +11,7 @@
   <div class="form-group" 
     ng-class="{ 'has-error': editComment.comment.$invalid && vm.submitted }">
     <div class="input-group">
-      <span class="input-group-addon">Comment</span>
+      <span class="input-group-addon" ng-bind="'Comment'"></span>
       <textarea id="comment" name="comment" class="form-control" ng-model="vm.comment.message" 
         placeholder="Comment" rows="1" msd-elastic required></textarea>
     </div>

@@ -5,7 +5,7 @@
   <div class="form-group" ng-class="{ 'has-error': editNote.title.$invalid && vm.submitted }">
 
     <div class="input-group">
-      <span class="notes input-group-addon">Title</span>
+      <span class="notes input-group-addon" ng-bind="'Title'"></span>
       <input type="text" name="title" id="title" class="form-control" ng-model="vm.note.title" 
         placeholder="Title" required>
     </div>
@@ -22,14 +22,14 @@
   <!-- Message -->
   <div class="form-group" ng-class="{ 'has-error': editNote.message.$invalid && vm.submitted }">
     <div class="input-group">
-      <span class="notes input-group-addon">Message</span>
+      <span class="notes input-group-addon" ng-bind="'Message'"></span>
       <textarea id="message" name="message" class="form-control" ng-model="vm.note.message" 
         placeholder="Message" msd-elastic required></textarea>
     </div>
   </div>
   <div class="form-group error" ng-class="{ 'has-error': editNote.message.$invalid 
-                                                                   && vm.submitted }">
+                                                         && vm.submitted }">
     <p class="help-block" ng-show="editNote.message.$error.required && vm.submitted" 
-        ng-bind="'Enter a message'"></p>
+      ng-bind="'Enter a message'"></p>
   </div>
 </form>
