@@ -2,17 +2,16 @@
   <div class="form-group"></div>
 
   <!-- Title -->
-  <div class="form-flex form-group" ng-class="{ 'has-error': editNote.title.$invalid && vm.submitted }">
+  <div class="form-group" ng-class="{ 'has-error': editNote.title.$invalid && vm.submitted }">
 
-    <div class="secondary notes">
-      <label for="title"><span class="text-muted">Title</span></label>
-    </div><div class="primary">
+    <div class="input-group">
+      <span class="notes input-group-addon">Title</span>
       <input type="text" name="title" id="title" class="form-control" ng-model="vm.note.title" 
         placeholder="Title" required>
     </div>
   </div>
-  <div class="form-flex form-group error" ng-class="{ 'has-error': editNote.title.$invalid 
-                                                                    && vm.submitted }">
+  <div class="form-group error" ng-class="{ 'has-error': editNote.title.$invalid 
+                                                         && vm.submitted }">
     <div class="secondary notes"></div>
     <div class="primary">
       <p class="help-block" ng-show="editNote.title.$error.required && vm.submitted" 
@@ -21,20 +20,16 @@
   </div>
   
   <!-- Message -->
-  <div class="form-flex form-group" ng-class="{ 'has-error': editNote.message.$invalid && vm.submitted }">
-    <div class="secondary notes">
-      <label for="message"><span class="text-muted">Message</span></label>
-    </div><div class="primary">
+  <div class="form-group" ng-class="{ 'has-error': editNote.message.$invalid && vm.submitted }">
+    <div class="input-group">
+      <span class="notes input-group-addon">Message</span>
       <textarea id="message" name="message" class="form-control" ng-model="vm.note.message" 
         placeholder="Message" msd-elastic required></textarea>
     </div>
   </div>
-  <div class="form-flex form-group error" ng-class="{ 'has-error': editNote.message.$invalid 
-                                                                    && vm.submitted }">
-    <div class="secondary notes"></div>
-    <div class="primary">
-      <p class="help-block" ng-show="editNote.message.$error.required && vm.submitted" 
+  <div class="form-group error" ng-class="{ 'has-error': editNote.message.$invalid 
+                                                                   && vm.submitted }">
+    <p class="help-block" ng-show="editNote.message.$error.required && vm.submitted" 
         ng-bind="'Enter a message'"></p>
-    </div>
   </div>
 </form>

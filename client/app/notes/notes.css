@@ -1,8 +1,8 @@
 .note-list, comment-list {
 	margin: 0;
 }
-.form-flex .secondary.notes {
-  min-width: 70px;
+.notes.input-group-addon {
+  min-width: 83px;
 }
 .note-list li, .comment-list li {
 	border: none;
