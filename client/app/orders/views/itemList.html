@@ -1,38 +1,47 @@
 <uib-accordion close-others="true">
   <uib-accordion-group ng-repeat="item in vm.order.items" 
-      heading="[{{item.aisle}}] {{item.description}} ({{item.quantity}})" 
-      template-url="app/templates/accordion-template.html">
-    <div class="form-flex form-group">
-      <div class="secondary items">
-        <label><span class="text-muted">Aisle</span></label>
+    heading="[{{item.aisle}}] {{item.description}} ({{item.quantity}})" 
+    template-url="app/templates/accordion-template.html">
+
+    <!-- Aisle -->
+    <div class="form-group">
+      <div class="input-group">
+        <span class="item input-group-addon" ng-bind="'Aisle'"></span>
+        <input type="text" class="form-control" ng-model="item.aisle" disabled>
       </div>
-      <div class="primary" ng-bind="item.aisle"></div>
     </div>
-    <div class="form-flex form-group">
-      <div class="secondary items">
-        <label><span class="text-muted">Desc.</span></label>
+
+    <!-- Description -->
+    <div class="form-group">
+      <div class="input-group">
+        <span class="item input-group-addon" ng-bind="'Desc'"></span>
+        <input type="text" class="form-control" ng-model="item.description" disabled>
       </div>
-      <div class="primary" ng-bind="item.description"></div>
     </div>
-    <div class="form-flex form-group">
-      <div class="secondary items">
-        <label><span class="text-muted">UPC</span></label>
+
+    <!-- UPC -->
+    <div class="form-group">
+      <div class="input-group">
+        <span class="item input-group-addon" ng-bind="'UPC'"></span>
+        <input type="text" class="form-control" ng-model="item.upc" disabled>
       </div>
-      <div class="primary" ng-bind="item.upc"></div>
     </div>
-    <div class="form-flex form-group">
-      <div class="secondary items">
-        <label><span class="text-muted">Quantity</span></label>
+
+    <!-- Quantity -->
+    <div class="form-group">
+      <div class="input-group">
+        <span class="item input-group-addon" ng-bind="'Quantity'"></span>
+        <input type="text" class="form-control" ng-model="item.quantity" disabled>
       </div>
-      <div class="primary" ng-bind="item.quantity"></div>
     </div>
+
     <!-- Edit, Delete item buttons -->
     <div class="form-group">
       <button type="button" class="btn btn-warning" ng-click="vm.editItem(item)">
         <i class="glyphicon glyphicon-edit"></i> Edit</button>
 
-      <button type="button" class="pull-right btn btn-danger" 
-          ng-click="vm.deleteItem(item)"><i class="glyphicon glyphicon-trash"></i> Delete</button>
+      <button type="button" class="pull-right btn btn-danger" ng-click="vm.deleteItem(item)">
+        <i class="glyphicon glyphicon-trash"></i> Delete</button>
     </div>
   </uib-accordion-group>
 </uib-accordion>

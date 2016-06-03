@@ -1,37 +1,47 @@
 <uib-accordion close-others="true">
   <uib-accordion-group ng-repeat="invoice in vm.order.invoices" heading="{{invoice.invoiceNo}}" 
-      template-url="app/templates/accordion-template.html">
-    <div class="form-flex form-group">
-      <div class="secondary invoices">
-        <label><span class="text-muted">Invoice #</span></label>
+    template-url="app/templates/accordion-template.html">
+
+    <!-- Invoice # -->
+    <div class="form-group">
+      <div class="input-group">
+        <span class="invoice input-group-addon" ng-bind="'Invoice #'"></span>
+        <input type="text" class="form-control" ng-model="invoice.invoiceNo" disabled>
       </div>
-      <div class="primary" ng-bind="invoice.invoiceNo"></div>
     </div>
-    <div class="form-flex form-group">
-      <div class="secondary invoices">
-        <label><span class="text-muted">Ticket #</span></label>
+
+    <!-- Ticket # -->
+    <div class="form-group">
+      <div class="input-group">
+        <span class="invoice input-group-addon" ng-bind="'Ticket #'"></span>
+        <input type="text" class="form-control" ng-model="invoice.ticketNo" disabled>
       </div>
-      <div class="primary" ng-bind="invoice.ticketNo"></div>
     </div>
-    <div class="form-flex form-group">
-      <div class="secondary invoices">
-        <label><span class="text-muted">Amount $</span></label>
+
+    <!-- Amount -->
+    <div class="form-group">
+      <div class="input-group">
+        <span class="invoice input-group-addon" ng-bind="'Amount $'"></span>
+        <input type="text" class="form-control" ng-model="invoice.amount" disabled>
       </div>
-      <div class="primary" ng-bind="invoice.amount"></div>
     </div>
-    <div class="form-flex form-group">
-      <div class="secondary invoices">
-        <label><span class="text-muted">Quantity</span></label>
+
+    <!-- Quantity -->
+    <div class="form-group">
+      <div class="input-group">
+        <span class="invoice input-group-addon" ng-bind="'Quantity'"></span>
+        <input type="text" class="form-control" ng-model="invoice.quantity" disabled>
       </div>
-      <div class="primary" ng-bind="invoice.quantity"></div>
     </div>
+
     <!-- Edit, Delete invoice buttons -->
     <div class="form-group">
       <button type="button" class="btn btn-warning" ng-click="vm.editInvoice(invoice)">
         <i class="glyphicon glyphicon-edit"></i> Edit</button>
 
       <button type="button" class="pull-right btn btn-danger" 
-          ng-click="vm.deleteInvoice(invoice)"><i class="glyphicon glyphicon-trash"></i> Delete</button>
+        ng-click="vm.deleteInvoice(invoice)"><i class="glyphicon glyphicon-trash"></i> 
+        Delete</button>
     </div>
   </uib-accordion-group>
 </uib-accordion>

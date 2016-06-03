@@ -26,7 +26,7 @@
   <div class="form-group" ng-class="{ 'has-error': editItem.description.$invalid 
                                                    && vm.submitted }">
     <div class="input-group">
-    <span class="item input-group-addon" ng-bind="'Description'"></span>
+    <span class="item input-group-addon" ng-bind="'Desc'"></span>
       <input type="text" id="description" name="description" class="form-control" 
         ng-change="vm.item.upc = ''" ng-model="vm.item.description" 
         uib-typeahead="product.description as product.description for product in vm.products | 
