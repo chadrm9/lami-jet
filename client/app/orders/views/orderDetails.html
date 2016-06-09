@@ -10,7 +10,8 @@
     <div class="input-group">
       <span class="order input-group-addon" ng-bind="'Full Name'"></span>
       <input type="text" id="fullName" name="fullName" class="form-control" 
-        ng-model="vm.fullName" placeholder="Full Name" disabled required>
+        value="{{vm.order.user.firstName}} {{vm.order.user.lastName}}" 
+        placeholder="Full Name" disabled required>
     </div>
   </div>
 
@@ -37,7 +38,7 @@
     <div class="input-group">
       <span class="order input-group-addon" ng-bind="'District Mgr'"></span>
       <input type="text" id="districtMgr" name="districtMgr" class="form-control" 
-        ng-model="vm.districtMgr" placeholder="District Mgr" disabled required>
+        value="{{vm.order.user.districtMgr.firstName}} {{vm.order.user.districtMgr.lastName}}" placeholder="District Mgr" disabled required>
     </div>
   </div>
 
@@ -77,8 +78,8 @@
       <span class="order input-group-addon" ng-bind="'Date Serviced'"></span>
       <p class="input-group" ng-click="vm.dateServicedCal = !vm.dateServicedCal">
         <input type="text" uib-datepicker-popup="{{vm.dateFormat}}" id="dateServiced" 
-          name="dateServiced" class="handicapped form-control" ng-model="vm.order.dateServiced" 
-          placeholder="Serviced Date" readonly required>
+          name="dateServiced" class="handicapped form-control" 
+          ng-model="vm.order.dateServiced" placeholder="Serviced Date" readonly required>
         <span class="input-group-btn">
           <button type="button" class="btn btn-default">
             <i class="text-muted glyphicon glyphicon-calendar"></i></button>
@@ -89,7 +90,8 @@
   <div class="inline-cal" ng-show="vm.dateServicedCal">
     <div style="display:inline-block;">
       <uib-datepicker ng-model="vm.order.dateServiced" class="well well-sm" 
-        datepicker-options="vm.inlineOptions" ng-change="vm.toggleDateServicedCal()">
+        datepicker-options="vm.inlineOptions" 
+        ng-change="vm.dateServicedCal = !vm.dateServicedCal">
       </uib-datepicker>
     </div>
   </div>
@@ -98,10 +100,10 @@
   <div class="form-group">
     <div class="input-group">
       <span class="order input-group-addon" ng-bind="'Date In-Store'"></span>
-      <p class="input-group" ng-click="this.dateInStoreCal = !this.dateInStoreCal">
+      <p class="input-group" ng-click="vm.dateInStoreCal = !vm.dateInStoreCal">
         <input type="text" uib-datepicker-popup="{{vm.dateFormat}}" id="dateInStore" 
-          name="dateInStore" class="handicapped form-control" ng-model="vm.order.dateInStore" 
-          placeholder="In-Store Date" readonly required>
+          name="dateInStore" class="handicapped form-control" 
+          ng-model="vm.order.dateInStore" placeholder="In-Store Date" readonly required>
         <span class="input-group-btn">
           <button type="button" class="btn btn-default">
             <i class="text-muted glyphicon glyphicon-calendar"></i></button>
@@ -113,7 +115,7 @@
     <div style="display:inline-block;">
       <uib-datepicker ng-model="vm.order.dateInStore" class="well well-sm" 
         datepicker-options="vm.inlineOptions" 
-        ng-change="this.dateInStoreCal = !this.dateInStoreCal">
+        ng-change="vm.dateInStoreCal = !vm.dateInStoreCal">
       </uib-datepicker>
     </div>
   </div>

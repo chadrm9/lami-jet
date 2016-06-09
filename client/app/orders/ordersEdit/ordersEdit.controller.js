@@ -16,10 +16,6 @@
       this.order.user = {};
       this.order.invoices = [];
       this.order.items = [];
-
-      // For view model only
-      this.fullName = '';
-      this.districtMgr = '';
     }
 
     $onInit() {
@@ -49,9 +45,6 @@
           if(this.$state.params.id) {
             this.ordersService.fetchOrder(this.$state.params.id).then(response => {
               this.order = response;
-              this.fullName = this.order.user.firstName + ' ' + this.order.user.lastName;
-              this.districtMgr = this.order.user.districtMgr.firstName + ' ' + 
-                                 this.order.user.districtMgr.lastName;
               this.order.dateServiced = new Date(this.order.dateServiced);
               this.order.dateInStore = new Date(this.order.dateInStore);
             });
@@ -60,9 +53,6 @@
           // Start new order
           else {
             this.order.user = this.getCurrentUser();
-            this.fullName = this.order.user.firstName + ' ' + this.order.user.lastName;
-            this.districtMgr = this.order.user.districtMgr.firstName + ' ' + 
-                               this.order.user.districtMgr.lastName;
             this.focus('chainStore');
           }
 
