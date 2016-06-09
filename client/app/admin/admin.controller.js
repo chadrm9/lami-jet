@@ -7,6 +7,7 @@ class AdminController {
     // Use the User $resource to fetch all users
     this.User = User;
     this.users = this.User.query();
+    // Set by Edit button
     this.user = {};
 
     this.Auth = Auth;
