@@ -11,11 +11,22 @@
         <form>
           <!-- Save/Cancel buttons -->
           <div class="form-group">
-            <div ng-hide="vm.cancel">
-              <button type="submit" class="btn btn-success" form="editOrder" value="Submit">
-                <i class="glyphicon glyphicon-ok"></i> Save</button>
+            <div ng-hide="vm.cancel || vm.save">
+              <button type="button" class="btn btn-success" ng-click="vm.save = !vm.save">
+                <i class="glyphicon glyphicon-ok"></i> Save</a>
                 
-              <button type="button" class="pull-right btn btn-danger" ng-click="vm.cancel = !vm.cancel">
+              <button type="button" class="pull-right btn btn-danger" 
+                ng-click="vm.cancel = !vm.cancel">
+                <i class="glyphicon glyphicon-remove"></i> Cancel</button>
+            </div>
+
+            <!-- Show Save -> Confirm/Cancel buttons -->
+            <div ng-show="vm.save">
+              <button type="submit" class="btn btn-success" form="editOrder" 
+                value="Submit"><i class="glyphicon glyphicon-ok"></i> Confirm</button>
+
+              <button type="button" class="pull-right btn btn-danger" 
+                ng-click="vm.save = !vm.save">
                 <i class="glyphicon glyphicon-remove"></i> Cancel</button>
             </div>
 
@@ -24,7 +35,8 @@
               <a type="button" class="btn btn-success" ui-sref="orders.list">
                   <i class="glyphicon glyphicon-ok"></i> Confirm</a>
 
-              <button type="button" class="pull-right btn btn-danger" ng-click="vm.cancel = !vm.cancel">
+              <button type="button" class="pull-right btn btn-danger" 
+                ng-click="vm.cancel = !vm.cancel">
                 <i class="glyphicon glyphicon-remove"></i> Cancel</button>
             </div>
           </div>
